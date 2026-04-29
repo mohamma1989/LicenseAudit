@@ -3,6 +3,7 @@ __pycache__/
 *.py[cod]
 .mypy_cache/
 backend/liau_env/
+keys.py
 .env
 
 # --- Database ---
