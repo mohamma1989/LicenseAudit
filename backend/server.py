@@ -92,7 +92,27 @@ init_db()
 @app.post("/api/upload_scan")
 async def receive_scan(payload: SoftwarePayload):
     try:
-        software_string = json.dumps(payload.software_list)
+        # --- THE SMART FILTER ---
+        clean_software_list = []
+        
+        # Add any noisy words here. Make sure they are lowercase!
+        junk_keywords = [
+            "kb50", "security update", "windows update", "hotfix", 
+            "language pack", "redistributable", "c++"
+        ]
+
+        for app in payload.software_list:
+            app_lower = app.lower()
+            
+            # If ANY of the junk keywords are in the app name, skip it entirely
+            if any(keyword in app_lower for keyword in junk_keywords):
+                continue
+                
+            clean_software_list.append(app)
+
+        # We now save the CLEAN list to the database instead of the raw payload
+        software_string = json.dumps(clean_software_list)
+        
         cursor.execute('''
                 INSERT INTO devices (hostname, os_type, software_list, last_seen)
                 VALUES (%s, %s, %s, CURRENT_TIMESTAMP)
@@ -101,7 +121,10 @@ async def receive_scan(payload: SoftwarePayload):
                     last_seen = CURRENT_TIMESTAMP
             ''', (payload.hostname, payload.os_type, software_string))
         
-        return {"status": "success"}
+        # We can even return how many junk apps we filtered out!
+        filtered_count = len(payload.software_list) - len(clean_software_list)
+        return {"status": "success", "filtered_out": filtered_count}
+        
     except Exception as e:
         return {"error": str(e)}
 
