@@ -44,17 +44,27 @@ app.add_middleware(
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 def init_db():
-    # Table 1: Devices
+    # Table 1: Devices (Cleaned up)
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS devices (
             hostname TEXT PRIMARY KEY,
             os_type TEXT,
-            software_list TEXT,
             last_seen TIMESTAMP
         )
     ''')
 
-    # Table 2: Licenses
+    # NEW Table 2: Device Software Mapping
+    # Every single app gets its own row. ON DELETE CASCADE means if a device 
+    # is deleted, all its software records vanish automatically to keep data clean.
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS device_software (
+            hostname TEXT REFERENCES devices(hostname) ON DELETE CASCADE,
+            software_name TEXT,
+            PRIMARY KEY (hostname, software_name)
+        )
+    ''')
+
+    # Table 3: Licenses
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS licenses (
             software_name TEXT PRIMARY KEY,
@@ -62,14 +72,13 @@ def init_db():
         )
     ''')
 
-    # Table 3: Ignored Software
+    # Table 4: Ignored Software
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS ignored_software (
             software_name TEXT PRIMARY KEY
         )
     ''')
 
-    # Pre-load defaults 
     default_freeware = [
         ("Notepad",), ("Google Chrome",), ("Mozilla Firefox",), 
         ("Microsoft Edge",), ("Microsoft Edge Update",)
@@ -79,9 +88,6 @@ def init_db():
         VALUES (%s) 
         ON CONFLICT (software_name) DO NOTHING
     ''', default_freeware)
-    
-    # That is it! No conn.close() down here.
-
 
 
 
@@ -94,39 +100,36 @@ async def receive_scan(payload: SoftwarePayload):
     try:
         # --- THE SMART FILTER ---
         clean_software_list = []
-        
-        # Add any noisy words here. Make sure they are lowercase!
-        junk_keywords = [
-            "kb50", "security update", "windows update", "hotfix", 
-            "language pack", "redistributable", "c++"
-        ]
+        junk_keywords = ["kb50", "security update", "windows update", "hotfix", "language pack", "redistributable", "c++"]
 
         for app in payload.software_list:
-            app_lower = app.lower()
-            
-            # If ANY of the junk keywords are in the app name, skip it entirely
-            if any(keyword in app_lower for keyword in junk_keywords):
+            if any(keyword in app.lower() for keyword in junk_keywords):
                 continue
-                
             clean_software_list.append(app)
 
-        # We now save the CLEAN list to the database instead of the raw payload
-        software_string = json.dumps(clean_software_list)
-        
+        # 1. Update the Device Record
         cursor.execute('''
-                INSERT INTO devices (hostname, os_type, software_list, last_seen)
-                VALUES (%s, %s, %s, CURRENT_TIMESTAMP)
+                INSERT INTO devices (hostname, os_type, last_seen)
+                VALUES (%s, %s, CURRENT_TIMESTAMP)
                 ON CONFLICT (hostname) DO UPDATE SET 
-                    software_list = EXCLUDED.software_list,
                     last_seen = CURRENT_TIMESTAMP
-            ''', (payload.hostname, payload.os_type, software_string))
+            ''', (payload.hostname, payload.os_type))
         
-        # We can even return how many junk apps we filtered out!
-        filtered_count = len(payload.software_list) - len(clean_software_list)
-        return {"status": "success", "filtered_out": filtered_count}
+        # 2. Erase the old software list for THIS specific device
+        cursor.execute("DELETE FROM device_software WHERE hostname = %s", (payload.hostname,))
+        
+        # 3. Insert the fresh, clean software list (One row per app!)
+        for app in clean_software_list:
+            cursor.execute('''
+                INSERT INTO device_software (hostname, software_name)
+                VALUES (%s, %s)
+            ''', (payload.hostname, app))
+            
+        return {"status": "success", "filtered_out": len(payload.software_list) - len(clean_software_list)}
         
     except Exception as e:
         return {"error": str(e)}
+
 
 @app.post("/api/add_license")
 async def add_license(license_data: LicenseInput):
@@ -160,78 +163,78 @@ async def ignore_software(data: IgnoreInput):
 @app.get("/api/dashboard_data")
 async def get_dashboard_data():
     try:
-        # 1. Fetch raw data using the global PostgreSQL cursor
-        cursor.execute("SELECT hostname, os_type, software_list, last_seen FROM devices")
+        cursor.execute("SELECT hostname, os_type, last_seen FROM devices")
         all_devices = cursor.fetchall()
         
         cursor.execute("SELECT software_name, allowed_count FROM licenses")
-        # Convert to a dictionary: {"Microsoft Office": 50}
         licenses = {row[0]: row[1] for row in cursor.fetchall()} 
         
         cursor.execute("SELECT software_name FROM ignored_software")
-        # Convert to a set for super fast lookups: {"Notepad", "Chrome"}
         ignored_apps = {row[0] for row in cursor.fetchall()}
 
-        # 2. The Math Engine (Count everything)
+        # NEW LOGIC: Get all software from the new table
+        cursor.execute("SELECT hostname, software_name FROM device_software")
+        all_software_rows = cursor.fetchall()
+
+        # Group it up for the math engine
         install_counts = {}
         software_locations = {}
+        device_software_map = {} # Groups apps by hostname for the UI
 
-        for device in all_devices:
-            hostname = device[0]
-            software_list = json.loads(device[2])
-            for package in software_list:
-                if package in install_counts:
-                    install_counts[package] += 1
-                    software_locations[package].append(hostname)
-                else:
-                    install_counts[package] = 1
-                    software_locations[package] = [hostname]
+        for row in all_software_rows:
+            host = row[0]
+            app = row[1]
+
+            # Count total installs across network
+            if app in install_counts:
+                install_counts[app] += 1
+                software_locations[app].append(host)
+            else:
+                install_counts[app] = 1
+                software_locations[app] = [host]
+            
+            # Map apps to specific devices for the UI list
+            if host not in device_software_map:
+                device_software_map[host] = []
+            device_software_map[host].append(app)
 
         # 3. Calculate Alerts (Reconciliation Loop)
         real_alerts = []
         for app_name, installed in install_counts.items():
-            
-            # RULE A: If it's on the Allowlist, skip it entirely.
             if app_name in ignored_apps:
                 continue
-                
-            # RULE B: Check if we own licenses for it.
             if app_name in licenses:
                 allowed = licenses[app_name]
                 if installed > allowed:
                     real_alerts.append({
-                        "software": app_name,
-                        "installed": installed,
-                        "allowed": allowed,
-                        "shortfall": installed - allowed,
-                        "devices": software_locations.get(app_name, [])
+                        "software": app_name, "installed": installed, "allowed": allowed,
+                        "shortfall": installed - allowed, "devices": software_locations.get(app_name, [])
                     })
-            # RULE C: Not ignored, and not licensed? Unapproved Software!
             else:
                 real_alerts.append({
-                    "software": app_name,
-                    "installed": installed,
-                    "allowed": 0,
-                    "shortfall": installed,
-                    "devices": software_locations.get(app_name, [])
+                    "software": app_name, "installed": installed, "allowed": 0,
+                    "shortfall": installed, "devices": software_locations.get(app_name, [])
                 })
 
         # 4. Package Device List for the UI
         device_list = []
         for device in all_devices:
+            host = device[0]
+            # Grab the list we built above, or an empty list if they have no apps
+            host_apps = device_software_map.get(host, []) 
+            
             device_list.append({
-                "hostname": device[0],
+                "hostname": host,
                 "os_type": device[1],
-                "software_count": len(json.loads(device[2])),
-                "software_list": json.loads(device[2]),
-                "last_seen": device[3]
+                "software_count": len(host_apps),
+                "software_list": host_apps,
+                "last_seen": device[2]
             })
 
         return {"status": "success", "alerts": real_alerts, "devices": device_list}
         
     except Exception as e:
         return {"error": str(e)}
-
 
 if __name__ == "__main__":
 	uvicorn.run(app, host="0.0.0.0", port=8000)

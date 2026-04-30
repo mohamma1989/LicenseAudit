@@ -5,19 +5,7 @@ import urllib.request
 import urllib.error
 
 
-def get_linux_software():
-    """Scans Debian/Ubuntu/Mint systems using dpkg"""
-    try:
-        result = subprocess.run(
-            ["dpkg-query", "-W", "-f=${binary:Package}\n"],
-            capture_output=True,
-            text=True,
-        )
-        packages = result.stdout.strip().split("\n")
-        return [pkg for pkg in packages if pkg]
-    except Exception as e:
-        print(f"Error reading Linux packages: {e}")
-        return []
+
 
 
 def get_windows_software():
@@ -76,10 +64,7 @@ def main():
     software = []
 
     # 1. The Traffic Cop: Which OS are we on?
-    if os_type == "Linux":
-        print("🐧 Linux detected. Scanning dpkg...")
-        software = get_linux_software()
-    elif os_type == "Windows":
+    if os_type == "Windows":
         print("🪟 Windows detected. Scanning Registry...")
         software = get_windows_software()
     else:
