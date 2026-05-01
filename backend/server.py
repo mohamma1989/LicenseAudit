@@ -17,19 +17,15 @@ class LicenseInput(BaseModel):
     allowed_count: int
 class IgnoreInput(BaseModel):
     software_name: str    
-try:
-	conn = psycopg2.connect(
-		dbname="licenseaudit",
-		user="la_admin",
-		password= key_password,
-		host="localhost",
-		port="5432"
-	)
-	# Autocommit ensures we don't have to call conn.commit() after every single insert
-	conn.autocommit = True 
-	cursor = conn.cursor()
-except Exception as e:
-	print(f"Database connection failed: {e}")
+# --- THE CLOUD DETECTOR ---
+# This line tells Python: "Look for a cloud database first. If you don't find one, 
+# just use my local laptop database."
+DB_URL = os.getenv("DATABASE_URL", f"host=localhost dbname=licenseaudit user=postgres password={key_password}")
+
+# Connect using the dynamic URL
+conn = psycopg2.connect(DB_URL)
+conn.autocommit = True
+cursor = conn.cursor()
 # --- THE CORS BRIDGE ---
 # This tells the backend: "It is safe to accept requests from the React app"
 app.add_middleware(
