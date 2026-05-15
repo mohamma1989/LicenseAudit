@@ -5,7 +5,7 @@ import socket
 import urllib.request
 
 # Configuration
-SERVER_URL = "http://127.0.0.1:8000/api/upload_scan" # Change to your server IP later
+SERVER_URL = "https://licenseaudit.onrender.com/api/upload_scan" # server IP 
 
 def get_classic_apps():
     """Reads classic Win32 apps from the Windows Registry."""

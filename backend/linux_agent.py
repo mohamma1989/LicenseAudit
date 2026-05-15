@@ -4,7 +4,7 @@ import socket
 import urllib.request
 
 # Configuration
-SERVER_URL = "http://localhost:8000/api/upload_scan"  # Change to your server IP later
+SERVER_URL = "https://licenseaudit.onrender.com/api/upload_scan" #server IP
 
 
 def get_installed_software():
