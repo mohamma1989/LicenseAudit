@@ -26,7 +26,14 @@ def get_classic_apps():
                         subkey_name = winreg.EnumKey(key, i)
                         with winreg.OpenKey(key, subkey_name) as subkey:
                             try:
-                                # We only want things that have an actual display name
+                                # --- THE FIX: Skip hidden system dependencies ---
+                                try:
+                                    is_system = winreg.QueryValueEx(subkey, "SystemComponent")[0]
+                                    if is_system == 1:
+                                        continue
+                                except OSError:
+                                    pass
+
                                 app_name = winreg.QueryValueEx(subkey, "DisplayName")[0]
                                 if app_name:
                                     software_list.add(app_name.strip())
@@ -40,17 +47,17 @@ def get_classic_apps():
     return software_list
 
 def get_store_apps():
-    """Reads modern UWP apps (like Pinterest) from the Microsoft Store using PowerShell."""
+    """Reads modern UWP apps, filtering out core system frameworks."""
     software_list = set()
     try:
-        # Run PowerShell silently to get Appx packages
-        command = 'powershell.exe -NoProfile -Command "Get-AppxPackage | Select-Object -ExpandProperty Name"'
+        # --- THE FIX: Filter out framework packages and core windows files ---
+        command = 'powershell.exe -NoProfile -Command "Get-AppxPackage | Where-Object { -not $_.IsFramework -and $_.NonRemovable -eq $false } | Select-Object -ExpandProperty Name"'
         output = subprocess.check_output(command, text=True, stderr=subprocess.DEVNULL)
         
-        # Clean up the output and add it to our list
         for line in output.split('\n'):
             clean_name = line.strip()
-            if clean_name:
+            # Let's skip raw internal Microsoft package names that slip through
+            if clean_name and not clean_name.startswith("Microsoft.Windows.") and not clean_name.startswith("Windows."):
                 software_list.add(clean_name)
     except Exception:
         pass

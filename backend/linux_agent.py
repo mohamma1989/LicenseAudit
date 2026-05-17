@@ -27,14 +27,18 @@ def get_installed_software():
             if filename.endswith(".desktop"):
                 filepath = os.path.join(directory, filename)
                 try:
-                    # Open the file and find the actual human-readable name
                     with open(filepath, "r", encoding="utf-8") as f:
-                        for line in f:
-                            # We strictly want the default "Name=" line, not the translated ones like "Name[fr]="
-                            if line.startswith("Name="):
-                                clean_name = line.strip().split("=", 1)[1]
-                                software_set.add(clean_name)
-                                break  # Stop reading the file once we find the name
+                        lines = f.readlines()
+                    
+                    # --- THE FIX: Skip hidden system utilities ---
+                    if any("NoDisplay=true" in line for line in lines):
+                        continue
+                        
+                    for line in lines:
+                        if line.startswith("Name="):
+                            clean_name = line.strip().split("=", 1)[1]
+                            software_set.add(clean_name)
+                            break  
                 except Exception:
                     pass
 
