@@ -3,6 +3,8 @@ import subprocess
 import json
 import socket
 import urllib.request
+import tkinter as tk
+from tkinter import messagebox
 
 # Configuration
 SERVER_URL = "https://licenseaudit.onrender.com/api/upload_scan" # server IP 
@@ -78,8 +80,11 @@ def send_to_server(machine_id, software_list):
     try:
         response = urllib.request.urlopen(req)
         print(f"Success! Server response: {response.read().decode('utf-8')}")
+        return True
     except Exception as e:
         print(f"Failed to send data: {e}")
+        return False
+
 if __name__ == "__main__":
     print("Gathering Windows software inventory...")
     machine_id = socket.gethostname() # This is our unique machine identifier
@@ -89,4 +94,15 @@ if __name__ == "__main__":
     all_apps.update(get_store_apps())
     
     print(f"Found {len(all_apps)} total applications. Sending to LicenseAudit server...")
-    send_to_server(machine_id, all_apps)        
+    success = send_to_server(machine_id, all_apps)
+    
+    # Show dialog based on result
+    root = tk.Tk()
+    root.withdraw()  # Hide the main window
+    
+    if success:
+        messagebox.showinfo("Status", "200\nSuccessfully")
+    else:
+        messagebox.showerror("Status", "Wrong")
+    
+    root.destroy()
