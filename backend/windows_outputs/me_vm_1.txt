@@ -1,0 +1,29 @@
+1424566A.147190DF3DE79
+Microsoft Update Health Tools
+Microsoft.549981C3F5F10
+Microsoft.Copilot
+Microsoft.Getstarted
+Microsoft.MSPaint
+Microsoft.Microsoft3DViewer
+Microsoft.MixedReality.Portal
+Microsoft.NET.Native.Framework.1.7
+Microsoft.NET.Native.Runtime.1.7
+Microsoft.Office.OneNote
+Microsoft.People
+Microsoft.SkypeApp
+Microsoft.UI.Xaml.2.0
+Microsoft.UI.Xaml.2.3
+Microsoft.UI.Xaml.2.4
+Microsoft.UI.Xaml.2.7
+Microsoft.Wallet
+Microsoft.Windows.CallingShellApp
+Microsoft.Windows.Search
+Microsoft.Windows.SecHealthUI
+Microsoft.WindowsMaps
+Microsoft.XboxApp
+Microsoft.XboxGameOverlay
+Microsoft.ZuneVideo
+NcsiUwpApp
+Python 3.14.4
+Update for x64-based Windows Systems (KB5001716)
+microsoft.windowscommunicationsapps

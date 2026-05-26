@@ -3,15 +3,17 @@ import subprocess
 import json
 import socket
 import urllib.request
+import urllib.error
+import tkinter as tk
+from tkinter import messagebox
 
 # Configuration
-SERVER_URL = "http://127.0.0.1:8000/api/upload_scan" # Change to your server IP later
+SERVER_URL = "https://licenseaudit.onrender.com/api/upload_scan"
 
 def get_classic_apps():
     """Reads classic Win32 apps from the Windows Registry."""
     software_list = set()
     
-    # We check both the 64-bit and 32-bit registry paths for the machine and the current user
     registry_paths = [
         (winreg.HKEY_LOCAL_MACHINE, r"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall"),
         (winreg.HKEY_LOCAL_MACHINE, r"SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall"),
@@ -26,7 +28,14 @@ def get_classic_apps():
                         subkey_name = winreg.EnumKey(key, i)
                         with winreg.OpenKey(key, subkey_name) as subkey:
                             try:
-                                # We only want things that have an actual display name
+                                # Skip hidden system dependencies
+                                try:
+                                    is_system = winreg.QueryValueEx(subkey, "SystemComponent")[0]
+                                    if is_system == 1:
+                                        continue
+                                except OSError:
+                                    pass
+
                                 app_name = winreg.QueryValueEx(subkey, "DisplayName")[0]
                                 if app_name:
                                     software_list.add(app_name.strip())
@@ -40,29 +49,28 @@ def get_classic_apps():
     return software_list
 
 def get_store_apps():
-    """Reads modern UWP apps (like Pinterest) from the Microsoft Store using PowerShell."""
+    """Reads modern UWP apps, filtering out core system frameworks."""
     software_list = set()
     try:
-        # Run PowerShell silently to get Appx packages
-        command = 'powershell.exe -NoProfile -Command "Get-AppxPackage | Select-Object -ExpandProperty Name"'
+        command = 'powershell.exe -NoProfile -Command "Get-AppxPackage | Where-Object { -not $_.IsFramework -and $_.NonRemovable -eq $false } | Select-Object -ExpandProperty Name"'
         output = subprocess.check_output(command, text=True, stderr=subprocess.DEVNULL)
         
-        # Clean up the output and add it to our list
         for line in output.split('\n'):
             clean_name = line.strip()
-            if clean_name:
+            # Skip raw internal Microsoft package names that slip through
+            if clean_name and not clean_name.startswith("Microsoft.Windows.") and not clean_name.startswith("Windows."):
                 software_list.add(clean_name)
     except Exception:
         pass
         
     return software_list
 
-def send_to_server(hostname, software_list):
-    """Packages the data as JSON and shoots it to your FastAPI backend."""
+def send_to_server(machine_id, software_list):
+    """Packages the data as JSON matching the Master Architecture."""
     payload = {
-        "hostname": hostname,
-        "os_type": "Windows",
-        "software_list": software_list
+        "company_id": "mohammad_corp_test",  
+        "machine_id": machine_id,            
+        "software_list": list(software_list)
     }
     
     data = json.dumps(payload).encode('utf-8')
@@ -71,20 +79,34 @@ def send_to_server(hostname, software_list):
     try:
         response = urllib.request.urlopen(req)
         print(f"Success! Server response: {response.read().decode('utf-8')}")
+        return True
+    except urllib.error.HTTPError as e:
+        body = e.read().decode("utf-8", errors="replace")
+        print(f"Failed to send data: HTTP {e.code} {e.reason}")
+        print(f"Server said: {body}")
+        return False
     except Exception as e:
         print(f"Failed to send data: {e}")
+        return False
 
 if __name__ == "__main__":
     print("Gathering Windows software inventory...")
-    hostname = socket.gethostname()
+    machine_id = socket.gethostname()
     
-    # Merge both lists into one giant Set (which automatically removes duplicates)
     all_apps = set()
     all_apps.update(get_classic_apps())
     all_apps.update(get_store_apps())
     
-    # Convert the set back to a normal Python list to send via JSON
-    final_list = list(all_apps)
+    print(f"Found {len(all_apps)} total applications. Sending to LicenseAudit server...")
+    success = send_to_server(machine_id, all_apps)
     
-    print(f"Found {len(final_list)} total applications. Sending to LicenseAudit server...")
-    send_to_server(hostname, final_list)
+    # Show dialog based on result
+    root = tk.Tk()
+    root.withdraw()  # Hide the main window
+    
+    if success:
+        messagebox.showinfo("Status", "200\nSuccessfully")
+    else:
+        messagebox.showerror("Status", "Wrong")
+    
+    root.destroy()

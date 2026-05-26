@@ -1,0 +1,190 @@
+22094SynapticsIncorporate.SmartAudio3
+7-Zip 26.01 (x64)
+AppUp.IntelGraphicsExperience
+AppUp.IntelOptaneMemoryandStorageManagement
+Application Verifier x64 External Package (DesktopEditions)
+Application Verifier x64 External Package (OnecoreUAP)
+Clipchamp.Clipchamp
+DolbyLaboratories.DolbyAudio
+E046963F.LenovoCompanion
+Espanso version 2.3.0
+Git
+Google Chrome
+IntelliJ IDEA 2025.1.7
+Java 8 Update 77 (64-bit)
+Java Auto Updater
+Java SE Development Kit 8 Update 77 (64-bit)
+JetBrains Toolbox
+Kits Configuration Installer
+Lenovo Vantage Service
+MSI Development Tools
+MSTeams
+Microsoft Excel MUI (English) 2013
+Microsoft Groove MUI (English) 2013
+Microsoft Office 32-bit Components 2013
+Microsoft Office OSM MUI (English) 2013
+Microsoft Office OSM UX MUI (English) 2013
+Microsoft Office Proofing (English) 2013
+Microsoft Office Proofing Tools 2013 - English
+Microsoft Office Proofing Tools 2013 - Español
+Microsoft Office Shared 32-bit MUI (English) 2013
+Microsoft Office Shared MUI (English) 2013
+Microsoft Office Shared Setup Metadata MUI (English) 2013
+Microsoft Office Standard 2013
+Microsoft OneNote MUI (English) 2013
+Microsoft Outlook MUI (English) 2013
+Microsoft PowerPoint MUI (English) 2013
+Microsoft Publisher MUI (English) 2013
+Microsoft Visual C++ 2022 X64 Additional Runtime - 14.50.35719
+Microsoft Visual C++ 2022 X64 Debug Runtime - 14.50.35719
+Microsoft Visual C++ 2022 X64 Minimum Runtime - 14.50.35719
+Microsoft Visual C++ 2022 X86 Additional Runtime - 14.50.35719
+Microsoft Visual C++ 2022 X86 Debug Runtime - 14.50.35719
+Microsoft Visual C++ 2022 X86 Minimum Runtime - 14.50.35719
+Microsoft Visual C++ v14 Redistributable (x64) - 14.50.35719
+Microsoft Visual C++ v14 Redistributable (x86) - 14.50.35719
+Microsoft Visual Studio Code (User)
+Microsoft Visual Studio Installer
+Microsoft Visual Studio Setup Configuration
+Microsoft Visual Studio Setup WMI Provider
+Microsoft Word MUI (English) 2013
+Microsoft.AIFabric.CBS.1.6
+Microsoft.AV1VideoExtension
+Microsoft.AVCEncoderVideoExtension
+Microsoft.ApplicationCompatibilityEnhancements
+Microsoft.BingNews
+Microsoft.GamingApp
+Microsoft.HEVCVideoExtension
+Microsoft.MPEG2VideoExtension
+Microsoft.NET.Native.Framework.1.3
+Microsoft.NET.Native.Framework.2.0
+Microsoft.NET.Native.Runtime.1.4
+Microsoft.NET.Native.Runtime.2.0
+Microsoft.Paint
+Microsoft.PowerAutomateDesktop
+Microsoft.RawImageExtension
+Microsoft.SecHealthUI
+Microsoft.StartExperiencesApp
+Microsoft.Todos
+Microsoft.UI.Xaml.CBS
+Microsoft.VisualStudioCode
+Microsoft.WidgetsPlatformRuntime
+Microsoft.Windows.AssignedAccessLockApp
+Microsoft.Windows.AugLoop.CBS
+Microsoft.Windows.PrintQueueActionCenter
+Microsoft.Windows.SecureAssessmentBrowser
+Microsoft.WindowsAppRuntime.1.6
+Microsoft.WindowsAppRuntime.CBS.1.6
+Microsoft.WindowsAppRuntime.CBS.1.8
+Microsoft.WindowsNotepad
+Microsoft.WindowsTerminal
+MicrosoftCorporationII.QuickAssist
+MicrosoftCorporationII.WinAppRuntime.Main.1.8
+MicrosoftWindows.60719890.Voiess
+MicrosoftWindows.60719895.Livtop
+MicrosoftWindows.60719896.Speion
+MicrosoftWindows.60719898.InpApp
+MicrosoftWindows.Client.Core
+MicrosoftWindows.Client.CoreAI
+MicrosoftWindows.Client.FileExp
+MicrosoftWindows.Client.OOBE
+MicrosoftWindows.Client.Photon
+MicrosoftWindows.Client.WebExperience
+Mozilla.Firefox
+Node.js
+Outils de vérification linguistique 2013 de Microsoft Office - Français
+Python 3.14.4 (64-bit)
+Python 3.14.4 Add to Path (64-bit)
+Python 3.14.4 Core Interpreter (64-bit)
+Python 3.14.4 Development Libraries (64-bit)
+Python 3.14.4 Documentation (64-bit)
+Python 3.14.4 Executables (64-bit)
+Python 3.14.4 Standard Library (64-bit)
+Python 3.14.4 Tcl/Tk Support (64-bit)
+Python 3.14.4 Test Suite (64-bit)
+Python 3.14.4 pip Bootstrap (64-bit)
+Python Launcher
+SDK ARM64 Additions
+SDK ARM64 Redistributables
+Sophos AMSI Protection
+Sophos AutoUpdate
+Sophos Diagnostic Utility
+Sophos Endpoint Agent
+Sophos Endpoint Defense
+Sophos Endpoint Firewall
+Sophos Endpoint Self Help
+Sophos Exploit Prevention
+Sophos File Scanner
+Sophos Health
+Sophos ML Engine
+Sophos Management Communications System
+Sophos Network Threat Protection
+Sophos Standalone Engine
+SynapticsIncorporated.241916F58D6E7
+SynapticsIncorporated.SynapticsControlPanel
+Universal CRT Extension SDK
+Universal CRT Headers Libraries and Sources
+Universal CRT Redistributable
+Universal CRT Tools x64
+Universal CRT Tools x86
+Universal General MIDI DLS Extension SDK
+Visual Studio Build Tools 2026
+WinAppDeploy
+WinRT Intellisense Desktop - Other Languages
+WinRT Intellisense Desktop - en-us
+WinRT Intellisense IoT - Other Languages
+WinRT Intellisense IoT - en-us
+WinRT Intellisense Mobile - en-us
+WinRT Intellisense PPI - Other Languages
+WinRT Intellisense PPI - en-us
+WinRT Intellisense UAP - Other Languages
+WinRT Intellisense UAP - en-us
+Windows App Certification Kit Native Components
+Windows App Certification Kit SupportedApiList x86
+Windows App Certification Kit x64
+Windows App Certification Kit x64 (OnecoreUAP)
+Windows Desktop Extension SDK
+Windows Desktop Extension SDK Contracts
+Windows IoT Extension SDK
+Windows IoT Extension SDK Contracts
+Windows Mobile Extension SDK
+Windows Mobile Extension SDK Contracts
+Windows SDK
+Windows SDK ARM64 Desktop Tools
+Windows SDK AddOn
+Windows SDK Desktop Headers arm64
+Windows SDK Desktop Headers x64
+Windows SDK Desktop Headers x86
+Windows SDK Desktop Libs arm64
+Windows SDK Desktop Libs x64
+Windows SDK Desktop Libs x86
+Windows SDK Desktop Tools arm64
+Windows SDK Desktop Tools x64
+Windows SDK Desktop Tools x86
+Windows SDK DirectX x64 Remote
+Windows SDK DirectX x86 Remote
+Windows SDK EULA
+Windows SDK Facade Windows WinMD Versioned
+Windows SDK Modern Non-Versioned Developer Tools
+Windows SDK Modern Versioned Developer Tools
+Windows SDK OnecoreUap Headers arm64
+Windows SDK OnecoreUap Headers x64
+Windows SDK OnecoreUap Headers x86
+Windows SDK Redistributables
+Windows SDK Signing Tools
+Windows SDK for Windows Store Apps
+Windows SDK for Windows Store Apps Contracts
+Windows SDK for Windows Store Apps DirectX x86 Remote
+Windows SDK for Windows Store Apps Headers
+Windows SDK for Windows Store Apps Headers OnecoreUap
+Windows SDK for Windows Store Apps Libs
+Windows SDK for Windows Store Apps Metadata
+Windows SDK for Windows Store Apps Tools
+Windows SDK for Windows Store Managed Apps Libs
+Windows Software Development Kit - Windows 10.0.26100.7705
+Windows Team Extension SDK
+Windows Team Extension SDK Contracts
+vcpp_crt.redist.clickonce
+vs_FileTracker_Singleton
+vs_githubprotocolhandlermsi
+vs_vswebprotocolselectormsi
