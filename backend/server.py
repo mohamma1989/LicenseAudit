@@ -87,8 +87,7 @@ def init_db():
     ''')
 
     default_freeware = [
-        ("Notepad",), ("Google Chrome",), ("Mozilla Firefox",), 
-        ("Microsoft Edge",), ("Microsoft Edge Update",)
+        
     ]
     cursor.executemany('''
         INSERT INTO ignored_software (software_name) 
