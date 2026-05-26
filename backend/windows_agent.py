@@ -8,13 +8,12 @@ import tkinter as tk
 from tkinter import messagebox
 
 # Configuration
-SERVER_URL = "https://licenseaudit.onrender.com/api/upload_scan" # server IP 
+SERVER_URL = "https://licenseaudit.onrender.com/api/upload_scan"
 
 def get_classic_apps():
     """Reads classic Win32 apps from the Windows Registry."""
     software_list = set()
     
-    # We check both the 64-bit and 32-bit registry paths for the machine and the current user
     registry_paths = [
         (winreg.HKEY_LOCAL_MACHINE, r"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall"),
         (winreg.HKEY_LOCAL_MACHINE, r"SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall"),
@@ -29,7 +28,7 @@ def get_classic_apps():
                         subkey_name = winreg.EnumKey(key, i)
                         with winreg.OpenKey(key, subkey_name) as subkey:
                             try:
-                                # --- THE FIX: Skip hidden system dependencies ---
+                                # Skip hidden system dependencies
                                 try:
                                     is_system = winreg.QueryValueEx(subkey, "SystemComponent")[0]
                                     if is_system == 1:
@@ -53,13 +52,12 @@ def get_store_apps():
     """Reads modern UWP apps, filtering out core system frameworks."""
     software_list = set()
     try:
-        # --- THE FIX: Filter out framework packages and core windows files ---
         command = 'powershell.exe -NoProfile -Command "Get-AppxPackage | Where-Object { -not $_.IsFramework -and $_.NonRemovable -eq $false } | Select-Object -ExpandProperty Name"'
         output = subprocess.check_output(command, text=True, stderr=subprocess.DEVNULL)
         
         for line in output.split('\n'):
             clean_name = line.strip()
-            # Let's skip raw internal Microsoft package names that slip through
+            # Skip raw internal Microsoft package names that slip through
             if clean_name and not clean_name.startswith("Microsoft.Windows.") and not clean_name.startswith("Windows."):
                 software_list.add(clean_name)
     except Exception:
@@ -68,10 +66,10 @@ def get_store_apps():
     return software_list
 
 def send_to_server(machine_id, software_list):
-    """Packages the data as JSON matching the new Master Architecture."""
+    """Packages the data as JSON matching the Master Architecture."""
     payload = {
-        "company_id": "mohammad_corp_test",  # <-- The new required field!
-        "machine_id": machine_id,            # <-- Changed from hostname
+        "company_id": "mohammad_corp_test",  
+        "machine_id": machine_id,            
         "software_list": list(software_list)
     }
     
@@ -93,7 +91,7 @@ def send_to_server(machine_id, software_list):
 
 if __name__ == "__main__":
     print("Gathering Windows software inventory...")
-    machine_id = socket.gethostname() # This is our unique machine identifier
+    machine_id = socket.gethostname()
     
     all_apps = set()
     all_apps.update(get_classic_apps())

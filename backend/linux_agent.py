@@ -5,19 +5,16 @@ import urllib.request
 import urllib.error
 
 # Configuration
-SERVER_URL = "https://licenseaudit.onrender.com/api/upload_scan" #server IP
-
+SERVER_URL = "https://licenseaudit.onrender.com/api/upload_scan"
 
 def get_installed_software():
     software_set = set()
 
     # These are the 3 standard locations where Linux stores "Start Menu" app shortcuts
     desktop_dirs = [
-        "/usr/share/applications",  # System-wide apt/dpkg apps
+        "/usr/share/applications",              # System-wide apt/dpkg apps
         "/var/lib/snapd/desktop/applications",  # Snap apps
-        os.path.expanduser(
-            "~/.local/share/applications"
-        ),  # User-specific flatpaks/apps
+        os.path.expanduser("~/.local/share/applications"),  # User-specific flatpaks/apps
     ]
 
     for directory in desktop_dirs:
@@ -31,7 +28,7 @@ def get_installed_software():
                     with open(filepath, "r", encoding="utf-8") as f:
                         lines = f.readlines()
                     
-                    # --- THE FIX: Skip hidden system utilities ---
+                    # Skip hidden system utilities
                     if any("NoDisplay=true" in line for line in lines):
                         continue
                         
@@ -45,12 +42,10 @@ def get_installed_software():
 
     return list(software_set)
 
-
 def send_to_server(machine_id, software_list):
-    # --- THE FIX: Match the server's new schema ---
     payload = {
-        "company_id": "mohammad_corp_test",  # Identifies the client
-        "machine_id": machine_id,            # Renamed from hostname
+        "company_id": "mohammad_corp_test",  # Identifies the client anchor context
+        "machine_id": machine_id,            
         "software_list": software_list
     }
 
@@ -72,10 +67,9 @@ def send_to_server(machine_id, software_list):
         print(f"Failed to send data: {e}")
         return False
 
-
 if __name__ == "__main__":
     print("Gathering Linux software inventory...")
-    machine_id = socket.gethostname()  # Grabs the unique computer name
+    machine_id = socket.gethostname()  
     apps = get_installed_software()
 
     print(f"Found {len(apps)} applications. Sending to LicenseAudit server...")
