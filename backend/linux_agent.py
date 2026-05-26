@@ -45,8 +45,13 @@ def get_installed_software():
     return list(software_set)
 
 
-def send_to_server(hostname, software_list):
-    payload = {"hostname": hostname, "os_type": "Linux", "software_list": software_list}
+def send_to_server(machine_id, software_list):
+    # --- THE FIX: Match the server's new schema ---
+    payload = {
+        "company_id": "mohammad_corp_test",  # Identifies the client
+        "machine_id": machine_id,            # Renamed from hostname
+        "software_list": software_list
+    }
 
     data = json.dumps(payload).encode("utf-8")
     req = urllib.request.Request(
@@ -62,8 +67,8 @@ def send_to_server(hostname, software_list):
 
 if __name__ == "__main__":
     print("Gathering Linux software inventory...")
-    hostname = socket.gethostname()
+    machine_id = socket.gethostname()  # Grabs the unique computer name
     apps = get_installed_software()
 
-    print(f"Found {len(apps)} real applications. Sending to LicenseAudit server...")
-    send_to_server(hostname, apps)
+    print(f"Found {len(apps)} applications. Sending to LicenseAudit server...")
+    send_to_server(machine_id, apps)

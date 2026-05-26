@@ -64,12 +64,12 @@ def get_store_apps():
         
     return software_list
 
-def send_to_server(hostname, software_list):
-    """Packages the data as JSON and shoots it to your FastAPI backend."""
+def send_to_server(machine_id, software_list):
+    """Packages the data as JSON matching the new Master Architecture."""
     payload = {
-        "hostname": hostname,
-        "os_type": "Windows",
-        "software_list": software_list
+        "company_id": "mohammad_corp_test",  # <-- The new required field!
+        "machine_id": machine_id,            # <-- Changed from hostname
+        "software_list": list(software_list)
     }
     
     data = json.dumps(payload).encode('utf-8')
@@ -80,18 +80,13 @@ def send_to_server(hostname, software_list):
         print(f"Success! Server response: {response.read().decode('utf-8')}")
     except Exception as e:
         print(f"Failed to send data: {e}")
-
 if __name__ == "__main__":
     print("Gathering Windows software inventory...")
-    hostname = socket.gethostname()
+    machine_id = socket.gethostname() # This is our unique machine identifier
     
-    # Merge both lists into one giant Set (which automatically removes duplicates)
     all_apps = set()
     all_apps.update(get_classic_apps())
     all_apps.update(get_store_apps())
     
-    # Convert the set back to a normal Python list to send via JSON
-    final_list = list(all_apps)
-    
-    print(f"Found {len(final_list)} total applications. Sending to LicenseAudit server...")
-    send_to_server(hostname, final_list)
+    print(f"Found {len(all_apps)} total applications. Sending to LicenseAudit server...")
+    send_to_server(machine_id, all_apps)        
