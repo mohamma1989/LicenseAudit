@@ -3,6 +3,7 @@ import subprocess
 import json
 import socket
 import urllib.request
+import urllib.error
 import tkinter as tk
 from tkinter import messagebox
 
@@ -81,6 +82,11 @@ def send_to_server(machine_id, software_list):
         response = urllib.request.urlopen(req)
         print(f"Success! Server response: {response.read().decode('utf-8')}")
         return True
+    except urllib.error.HTTPError as e:
+        body = e.read().decode("utf-8", errors="replace")
+        print(f"Failed to send data: HTTP {e.code} {e.reason}")
+        print(f"Server said: {body}")
+        return False
     except Exception as e:
         print(f"Failed to send data: {e}")
         return False

@@ -2,6 +2,7 @@ import os
 import json
 import socket
 import urllib.request
+import urllib.error
 
 # Configuration
 SERVER_URL = "https://licenseaudit.onrender.com/api/upload_scan" #server IP
@@ -61,8 +62,15 @@ def send_to_server(machine_id, software_list):
     try:
         response = urllib.request.urlopen(req)
         print(f"Success! Server response: {response.read().decode('utf-8')}")
+        return True
+    except urllib.error.HTTPError as e:
+        body = e.read().decode("utf-8", errors="replace")
+        print(f"Failed to send data: HTTP {e.code} {e.reason}")
+        print(f"Server said: {body}")
+        return False
     except Exception as e:
         print(f"Failed to send data: {e}")
+        return False
 
 
 if __name__ == "__main__":
@@ -71,4 +79,6 @@ if __name__ == "__main__":
     apps = get_installed_software()
 
     print(f"Found {len(apps)} applications. Sending to LicenseAudit server...")
-    send_to_server(machine_id, apps)
+    success = send_to_server(machine_id, apps)
+    if not success:
+        raise SystemExit(1)

@@ -27,9 +27,9 @@ app.add_middleware(
 )
 
 class SoftwarePayload(BaseModel):
-	hostname: str
-	os_type: str
-	software_list: list[str]
+    company_id: str
+    machine_id: str
+    software_list: list[str]
 class LicenseInput(BaseModel):
     software_name: str
     allowed_count: int
@@ -49,27 +49,30 @@ cursor = conn.cursor()
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 def init_db():
-    # Table 1: Devices (Cleaned up)
     cursor.execute('''
-        CREATE TABLE IF NOT EXISTS devices (
-            hostname TEXT PRIMARY KEY,
-            os_type TEXT,
-            last_seen TIMESTAMP
+        CREATE TABLE IF NOT EXISTS master_apps (
+            id SERIAL PRIMARY KEY,
+            app_name TEXT NOT NULL UNIQUE,
+            risk_tier INTEGER DEFAULT 1,
+            app_type TEXT DEFAULT 'Unknown',
+            is_prohibited BOOLEAN DEFAULT FALSE,
+            is_reviewed_by_ad BOOLEAN DEFAULT FALSE,
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         )
     ''')
 
-    # NEW Table 2: Device Software Mapping
-    # Every single app gets its own row. ON DELETE CASCADE means if a device 
-    # is deleted, all its software records vanish automatically to keep data clean.
     cursor.execute('''
-        CREATE TABLE IF NOT EXISTS device_software (
-            hostname TEXT REFERENCES devices(hostname) ON DELETE CASCADE,
-            software_name TEXT,
-            PRIMARY KEY (hostname, software_name)
+        CREATE TABLE IF NOT EXISTS machine_inventories (
+            id SERIAL PRIMARY KEY,
+            company_id TEXT NOT NULL,
+            machine_id TEXT NOT NULL,
+            master_app_id INTEGER REFERENCES master_apps(id) ON DELETE CASCADE,
+            installed_version TEXT DEFAULT 'Unknown',
+            last_scanned_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            UNIQUE (company_id, machine_id, master_app_id)
         )
     ''')
 
-    # Table 3: Licenses
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS licenses (
             software_name TEXT PRIMARY KEY,
@@ -77,7 +80,6 @@ def init_db():
         )
     ''')
 
-    # Table 4: Ignored Software
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS ignored_software (
             software_name TEXT PRIMARY KEY
@@ -99,39 +101,66 @@ def init_db():
 init_db()
 
 
+def get_or_create_master_app_id(app_name: str) -> int:
+    cursor.execute(
+        '''
+        INSERT INTO master_apps (app_name)
+        VALUES (%s)
+        ON CONFLICT (app_name) DO UPDATE SET app_name = EXCLUDED.app_name
+        RETURNING id
+        ''',
+        (app_name,),
+    )
+    row = cursor.fetchone()
+    if row:
+        return row[0]
+    cursor.execute("SELECT id FROM master_apps WHERE app_name = %s", (app_name,))
+    return cursor.fetchone()[0]
+
 
 @app.post("/api/upload_scan")
 async def receive_scan(payload: SoftwarePayload):
     try:
-        # --- THE SMART FILTER ---
         clean_software_list = []
-        junk_keywords = ["kb50", "security update", "windows update", "hotfix", "language pack", "redistributable", "c++"]
+        junk_keywords = [
+            "kb50", "security update", "windows update", "hotfix",
+            "language pack", "redistributable", "c++",
+        ]
 
         for app in payload.software_list:
             if any(keyword in app.lower() for keyword in junk_keywords):
                 continue
             clean_software_list.append(app)
 
-        # 1. Update the Device Record
-        cursor.execute('''
-                INSERT INTO devices (hostname, os_type, last_seen)
-                VALUES (%s, %s, CURRENT_TIMESTAMP)
-                ON CONFLICT (hostname) DO UPDATE SET 
-                    last_seen = CURRENT_TIMESTAMP
-            ''', (payload.hostname, payload.os_type))
-        
-        # 2. Erase the old software list for THIS specific device
-        cursor.execute("DELETE FROM device_software WHERE hostname = %s", (payload.hostname,))
-        
-        # 3. Insert the fresh, clean software list (One row per app!)
+        cursor.execute(
+            '''
+            DELETE FROM machine_inventories
+            WHERE company_id = %s AND machine_id = %s
+            ''',
+            (payload.company_id, payload.machine_id),
+        )
+
         for app in clean_software_list:
-            cursor.execute('''
-                INSERT INTO device_software (hostname, software_name)
-                VALUES (%s, %s)
-            ''', (payload.hostname, app))
-            
-        return {"status": "success", "filtered_out": len(payload.software_list) - len(clean_software_list)}
-        
+            master_app_id = get_or_create_master_app_id(app)
+            cursor.execute(
+                '''
+                INSERT INTO machine_inventories
+                    (company_id, machine_id, master_app_id, last_scanned_at)
+                VALUES (%s, %s, %s, CURRENT_TIMESTAMP)
+                ON CONFLICT (company_id, machine_id, master_app_id)
+                DO UPDATE SET last_scanned_at = CURRENT_TIMESTAMP
+                ''',
+                (payload.company_id, payload.machine_id, master_app_id),
+            )
+
+        return {
+            "status": "success",
+            "company_id": payload.company_id,
+            "machine_id": payload.machine_id,
+            "apps_stored": len(clean_software_list),
+            "filtered_out": len(payload.software_list) - len(clean_software_list),
+        }
+
     except Exception as e:
         return {"error": str(e)}
 
@@ -168,42 +197,46 @@ async def ignore_software(data: IgnoreInput):
 @app.get("/api/dashboard_data")
 async def get_dashboard_data():
     try:
-        cursor.execute("SELECT hostname, os_type, last_seen FROM devices")
-        all_devices = cursor.fetchall()
-        
         cursor.execute("SELECT software_name, allowed_count FROM licenses")
-        licenses = {row[0]: row[1] for row in cursor.fetchall()} 
-        
+        licenses = {row[0]: row[1] for row in cursor.fetchall()}
+
         cursor.execute("SELECT software_name FROM ignored_software")
         ignored_apps = {row[0] for row in cursor.fetchall()}
 
-        # NEW LOGIC: Get all software from the new table
-        cursor.execute("SELECT hostname, software_name FROM device_software")
+        cursor.execute('''
+            SELECT mi.company_id, mi.machine_id, ma.app_name, mi.last_scanned_at
+            FROM machine_inventories mi
+            JOIN master_apps ma ON mi.master_app_id = ma.id
+        ''')
         all_software_rows = cursor.fetchall()
 
-        # Group it up for the math engine
         install_counts = {}
         software_locations = {}
-        device_software_map = {} # Groups apps by hostname for the UI
+        device_software_map = {}
+        device_meta = {}
 
-        for row in all_software_rows:
-            host = row[0]
-            app = row[1]
+        for company_id, machine_id, app_name, last_scanned in all_software_rows:
+            device_key = f"{company_id}:{machine_id}"
 
-            # Count total installs across network
-            if app in install_counts:
-                install_counts[app] += 1
-                software_locations[app].append(host)
+            if app_name in install_counts:
+                install_counts[app_name] += 1
+                software_locations[app_name].append(machine_id)
             else:
-                install_counts[app] = 1
-                software_locations[app] = [host]
-            
-            # Map apps to specific devices for the UI list
-            if host not in device_software_map:
-                device_software_map[host] = []
-            device_software_map[host].append(app)
+                install_counts[app_name] = 1
+                software_locations[app_name] = [machine_id]
 
-        # 3. Calculate Alerts (Reconciliation Loop)
+            if device_key not in device_software_map:
+                device_software_map[device_key] = []
+            device_software_map[device_key].append(app_name)
+
+            existing = device_meta.get(device_key)
+            if not existing or (last_scanned and last_scanned > existing["last_seen"]):
+                device_meta[device_key] = {
+                    "company_id": company_id,
+                    "machine_id": machine_id,
+                    "last_seen": last_scanned,
+                }
+
         real_alerts = []
         for app_name, installed in install_counts.items():
             if app_name in ignored_apps:
@@ -212,32 +245,35 @@ async def get_dashboard_data():
                 allowed = licenses[app_name]
                 if installed > allowed:
                     real_alerts.append({
-                        "software": app_name, "installed": installed, "allowed": allowed,
-                        "shortfall": installed - allowed, "devices": software_locations.get(app_name, [])
+                        "software": app_name,
+                        "installed": installed,
+                        "allowed": allowed,
+                        "shortfall": installed - allowed,
+                        "devices": software_locations.get(app_name, []),
                     })
             else:
                 real_alerts.append({
-                    "software": app_name, "installed": installed, "allowed": 0,
-                    "shortfall": installed, "devices": software_locations.get(app_name, [])
+                    "software": app_name,
+                    "installed": installed,
+                    "allowed": 0,
+                    "shortfall": installed,
+                    "devices": software_locations.get(app_name, []),
                 })
 
-        # 4. Package Device List for the UI
         device_list = []
-        for device in all_devices:
-            host = device[0]
-            # Grab the list we built above, or an empty list if they have no apps
-            host_apps = device_software_map.get(host, []) 
-            
+        for device_key, meta in device_meta.items():
+            host_apps = device_software_map.get(device_key, [])
             device_list.append({
-                "hostname": host,
-                "os_type": device[1],
+                "hostname": meta["machine_id"],
+                "company_id": meta["company_id"],
+                "os_type": "Unknown",
                 "software_count": len(host_apps),
                 "software_list": host_apps,
-                "last_seen": device[2]
+                "last_seen": meta["last_seen"],
             })
 
         return {"status": "success", "alerts": real_alerts, "devices": device_list}
-        
+
     except Exception as e:
         return {"error": str(e)}
 
