@@ -8,6 +8,24 @@ import json
 from keys import key_password
 
 app = FastAPI()
+
+# Allow the React dev server (and optional production frontend) to call the API.
+_cors_origins = [
+    origin.strip()
+    for origin in os.getenv(
+        "CORS_ORIGINS",
+        "http://localhost:5173,http://127.0.0.1:5173",
+    ).split(",")
+    if origin.strip()
+]
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=_cors_origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 class SoftwarePayload(BaseModel):
 	hostname: str
 	os_type: str
@@ -26,15 +44,6 @@ DB_URL = os.getenv("DATABASE_URL", f"host=localhost dbname=licenseaudit user=pos
 conn = psycopg2.connect(DB_URL)
 conn.autocommit = True
 cursor = conn.cursor()
-# --- THE CORS BRIDGE ---
-# This tells the backend: "It is safe to accept requests from the React app"
-app.add_middleware(
-	CORSMiddleware,
-	allow_origins=["http://localhost:5173"],
-	allow_credentials=True,
-	allow_methods=["*"],
-	allow_headers=["*"],
-)
 
 # Get the absolute path of the directory where server.py lives
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))

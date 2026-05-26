@@ -1,73 +1,79 @@
-1527c705-839a-4832-9118-54d4Bd6a0c89
-c5e2524a-ea46-4f67-841f-6a9465d9d515
-E2A4F912-2574-4A75-9BB0-0D023378592B
-F46D4000-FD22-4DB4-AC8E-4E1DDDE828FE
-Microsoft Edge
-Microsoft Edge WebView2 Runtime
-Microsoft OneDrive
-Microsoft.AAD.BrokerPlugin
-Microsoft.AccountsControl
-Microsoft.AsyncTextService
-Microsoft.BingSearch
-Microsoft.BingWeather
-Microsoft.BioEnrollment
-Microsoft.CredDialogHost
-Microsoft.DesktopAppInstaller
-Microsoft.ECApp
-Microsoft.GetHelp
-Microsoft.HEIFImageExtension
-Microsoft.LockApp
-Microsoft.MicrosoftEdge.Stable
-Microsoft.MicrosoftEdgeDevToolsClient
-Microsoft.MicrosoftOfficeHub
-Microsoft.MicrosoftSolitaireCollection
-Microsoft.MicrosoftStickyNotes
-Microsoft.NET.Native.Framework.2.2
-Microsoft.NET.Native.Runtime.2.2
-Microsoft.OutlookForWindows
-Microsoft.ScreenSketch
-Microsoft.StorePurchaseApp
-Microsoft.UI.Xaml.2.8
-Microsoft.VCLibs.140.00
-Microsoft.VCLibs.140.00.UWPDesktop
-Microsoft.VP9VideoExtensions
-Microsoft.WebMediaExtensions
-Microsoft.WebpImageExtension
-Microsoft.Win32WebViewHost
-Microsoft.Windows.Apprep.ChxApp
-Microsoft.Windows.CapturePicker
-Microsoft.Windows.CloudExperienceHost
-Microsoft.Windows.ContentDeliveryManager
-Microsoft.Windows.DevHome
-Microsoft.Windows.NarratorQuickStart
-Microsoft.Windows.OOBENetworkCaptivePortal
-Microsoft.Windows.OOBENetworkConnectionFlow
-Microsoft.Windows.ParentalControls
-Microsoft.Windows.PeopleExperienceHost
-Microsoft.Windows.Photos
-Microsoft.Windows.PinningConfirmationDialog
-Microsoft.Windows.ShellExperienceHost
-Microsoft.Windows.StartMenuExperienceHost
-Microsoft.Windows.XGpuEjectDialog
-Microsoft.WindowsAlarms
-Microsoft.WindowsAppRuntime.1.7
-Microsoft.WindowsAppRuntime.1.8
-Microsoft.WindowsCalculator
-Microsoft.WindowsCamera
-Microsoft.WindowsFeedbackHub
-Microsoft.WindowsSoundRecorder
-Microsoft.WindowsStore
-Microsoft.Xbox.TCUI
-Microsoft.XboxGameCallableUI
-Microsoft.XboxGamingOverlay
-Microsoft.XboxIdentityProvider
-Microsoft.XboxSpeechToTextOverlay
-Microsoft.YourPhone
-Microsoft.ZuneMusic
-MicrosoftWindows.Client.CBS
-MicrosoftWindows.CrossDevice
-MicrosoftWindows.UndockedDevKit
-PythonSoftwareFoundation.PythonManager
-Windows.CBSPreview
-windows.immersivecontrolpanel
-Windows.PrintDialog
+AppUp.IntelGraphicsExperience
+Clipchamp.Clipchamp
+Espanso version 2.3.0
+Git
+Google Chrome
+IntelliJ IDEA 2025.1.7
+JetBrains Toolbox
+Microsoft Excel MUI (English) 2013
+Microsoft Groove MUI (English) 2013
+Microsoft Office 32-bit Components 2013
+Microsoft Office OSM MUI (English) 2013
+Microsoft Office OSM UX MUI (English) 2013
+Microsoft Office Proofing (English) 2013
+Microsoft Office Proofing Tools 2013 - English
+Microsoft Office Proofing Tools 2013 - Español
+Microsoft Office Shared 32-bit MUI (English) 2013
+Microsoft Office Shared MUI (English) 2013
+Microsoft Office Shared Setup Metadata MUI (English) 2013
+Microsoft Office Standard 2013
+Microsoft OneNote MUI (English) 2013
+Microsoft Outlook MUI (English) 2013
+Microsoft PowerPoint MUI (English) 2013
+Microsoft Publisher MUI (English) 2013
+Microsoft Visual Studio Code (User)
+Microsoft Word MUI (English) 2013
+Microsoft.AIFabric.CBS.1.6
+Microsoft.ApplicationCompatibilityEnhancements
+Microsoft.AV1VideoExtension
+Microsoft.AVCEncoderVideoExtension
+Microsoft.BingNews
+Microsoft.GamingApp
+Microsoft.HEVCVideoExtension
+Microsoft.MPEG2VideoExtension
+Microsoft.Paint
+Microsoft.PowerAutomateDesktop
+Microsoft.RawImageExtension
+Microsoft.SecHealthUI
+Microsoft.StartExperiencesApp
+Microsoft.Todos
+Microsoft.UI.Xaml.CBS
+Microsoft.VisualStudioCode
+Microsoft.WidgetsPlatformRuntime
+Microsoft.Windows.AssignedAccessLockApp
+Microsoft.Windows.AugLoop.CBS
+Microsoft.Windows.PrintQueueActionCenter
+Microsoft.Windows.SecureAssessmentBrowser
+Microsoft.WindowsAppRuntime.1.6
+Microsoft.WindowsAppRuntime.CBS.1.6
+Microsoft.WindowsAppRuntime.CBS.1.8
+Microsoft.WindowsNotepad
+Microsoft.WindowsTerminal
+MicrosoftCorporationII.QuickAssist
+MicrosoftCorporationII.WinAppRuntime.Main.1.8
+MicrosoftWindows.60719890.Voiess
+MicrosoftWindows.60719895.Livtop
+MicrosoftWindows.60719896.Speion
+MicrosoftWindows.60719898.InpApp
+MicrosoftWindows.Client.Core
+MicrosoftWindows.Client.CoreAI
+MicrosoftWindows.Client.FileExp
+MicrosoftWindows.Client.OOBE
+MicrosoftWindows.Client.Photon
+MicrosoftWindows.Client.WebExperience
+MSTeams
+Python Launcher
+Sophos AMSI Protection
+Sophos AutoUpdate
+Sophos Diagnostic Utility
+Sophos Endpoint Agent
+Sophos Endpoint Defense
+Sophos Endpoint Firewall
+Sophos Endpoint Self Help
+Sophos Exploit Prevention
+Sophos File Scanner
+Sophos Health
+Sophos Management Communications System
+Sophos ML Engine
+Sophos Network Threat Protection
+Sophos Standalone Engine
