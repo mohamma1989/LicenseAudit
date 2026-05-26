@@ -39,7 +39,6 @@ class AgentPayload(BaseModel):
     software_list: List[str]
 
 def get_db_connection():
-    # Supports both standard DSN strings and keyword strings
     return psycopg2.connect(DB_URL, cursor_factory=RealDictCursor)
 
 @app.post("/api/upload_scan")
@@ -59,10 +58,12 @@ async def upload_scan(payload: AgentPayload):
             (incoming_apps,)
         )
         existing_rows = cursor.fetchall()
-        known_apps_map = {row["app_name"]: row["id"] for row in existing_rows}
+        
+        # FIX 1: Map using lowercase keys to protect against any case mismatching later
+        known_apps_map = {row["app_name"].lower(): row["id"] for row in existing_rows}
 
         # Identify missing software that requires AI classification
-        missing_apps = [name for name in incoming_apps if name not in known_apps_map]
+        missing_apps = [name for name in incoming_apps if name.lower() not in known_apps_map]
 
         # Step 3: Call AI Agent using GPT-5.4-mini with compressed single-letter keys
         if missing_apps:
@@ -95,7 +96,6 @@ async def upload_scan(payload: AgentPayload):
 
             # Step 4: Save new compressed classes into global master catalog
             for item in ai_categorized_list:
-                # We map the single letters back to our local variables cleanly!
                 name = item.get("n")
                 tier = item.get("r", 1)
                 atype = item.get("t", "Unknown")
@@ -105,7 +105,9 @@ async def upload_scan(payload: AgentPayload):
 
                 is_prohibited = atype.lower() in ["game", "p2p/torrent", "torrent", "p2p", "media downloader"]
 
+                # FIX 2: Use an internal sub-transaction savepoint so a single failure won't abort everything
                 try:
+                    cursor.execute("SAVEPOINT app_insert_savepoint;")
                     cursor.execute(
                         """
                         INSERT INTO master_apps (app_name, risk_tier, app_type, is_prohibited, sent_to_ai_at)
@@ -118,17 +120,19 @@ async def upload_scan(payload: AgentPayload):
                     )
                     new_id_row = cursor.fetchone()
                     if new_id_row:
-                        known_apps_map[name] = new_id_row["id"]
+                        known_apps_map[name.lower()] = new_id_row["id"]
+                    cursor.execute("RELEASE SAVEPOINT app_insert_savepoint;")
                 except Exception as db_err:
                     print(f"Skipping row write error for {name}: {db_err}")
-                    conn.rollback()
+                    cursor.execute("ROLLBACK TO SAVEPOINT app_insert_savepoint;")
                     continue
 
         # Step 5: Map inventory states linking this computer to the master catalog entries
         for app_name in incoming_apps:
-            master_id = known_apps_map.get(app_name)
+            # Matches keys smoothly using our unified lowercase map
+            master_id = known_apps_map.get(app_name.lower())
             if not master_id:
-                continue # Safety bypass for any missing allocations
+                continue 
             
             cursor.execute(
                 """
