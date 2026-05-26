@@ -64,21 +64,23 @@ async def upload_scan(payload: AgentPayload):
         # Identify missing software that requires AI classification
         missing_apps = [name for name in incoming_apps if name not in known_apps_map]
 
-        # Step 3: Call AI Agent using GPT-5.4-mini if unknown software is detected
+        # Step 3: Call AI Agent using GPT-5.4-mini with compressed single-letter keys
         if missing_apps:
             system_prompt = (
                 "You are an enterprise Software Asset Management expert.\n"
                 "Categorize the provided list of software names into a JSON object containing an array named 'apps'.\n"
-                "Each object within 'apps' must strictly feature: 'app_name', 'risk_tier' (integer 0-3), and 'app_type' (string).\n\n"
+                "Each object within 'apps' must strictly feature these single-letter keys:\n"
+                "- 'n': The exact string of the app_name.\n"
+                "- 'r': The risk tier as a single integer (0, 1, 2, or 3).\n"
+                "- 't': The app_type category classification (string).\n\n"
                 "Risk Tiers mapping rules:\n"
-                "0 = Operating System components, low-level system drivers, updates, language runtimes (e.g. .NET, DirectX).\n"
-                "1 = Standard free, open-source, or utility applications (e.g. Google Chrome, Notepad++, VLC).\n"
-                "2 = Medium risk, Shadow IT, or restrictive items (e.g. Games, Torrent Clients, Personal Chat tools).\n"
-                "3 = High risk, high-cost, or audit-intensive commercial software requiring active licenses (e.g. Adobe Creative Cloud, IntelliJ IDEA, Microsoft Office).\n\n"
-                "Return absolutely zero conversational fluff, notes, or markdown. Only raw JSON matching the requested structure."
+                "0 = Operating System components, low-level system drivers, updates, language runtimes.\n"
+                "1 = Standard free, open-source, or utility applications.\n"
+                "2 = Medium risk, Shadow IT, or restrictive items (Games, Torrents, Personal Chat tools).\n"
+                "3 = High risk, high-cost, or audit-intensive commercial software requiring active licenses.\n\n"
+                "Return absolutely zero conversational fluff, notes, or markdown. Only raw minified JSON."
             )
 
-            # Requesting JSON structure explicitly from GPT-5.4-mini
             ai_response = openai_client.chat.completions.create(
                 model="gpt-5.4-mini",
                 response_format={"type": "json_object"},
@@ -91,13 +93,16 @@ async def upload_scan(payload: AgentPayload):
             parsed_payload = json.loads(ai_response.choices[0].message.content)
             ai_categorized_list = parsed_payload.get("apps", [])
 
-            # Step 4: Save new app classes into global master catalog
+            # Step 4: Save new compressed classes into global master catalog
             for item in ai_categorized_list:
-                name = item.get("app_name")
-                tier = item.get("risk_tier", 1)
-                atype = item.get("app_type", "Unknown")
+                # We map the single letters back to our local variables cleanly!
+                name = item.get("n")
+                tier = item.get("r", 1)
+                atype = item.get("t", "Unknown")
                 
-                # Automatically flag malicious/non-work applications as prohibited
+                if not name:
+                    continue
+
                 is_prohibited = atype.lower() in ["game", "p2p/torrent", "torrent", "p2p", "media downloader"]
 
                 try:
