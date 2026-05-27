@@ -11,8 +11,8 @@ from tkinter import messagebox
 SERVER_URL = "https://licenseaudit.onrender.com/api/upload_scan"
 
 def get_classic_apps():
-    """Reads classic Win32 apps from the Windows Registry."""
-    software_list = set()
+    """Reads classic Win32 app names AND real versions from the Windows Registry."""
+    software_dict = {}
     
     registry_paths = [
         (winreg.HKEY_LOCAL_MACHINE, r"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall"),
@@ -28,7 +28,7 @@ def get_classic_apps():
                         subkey_name = winreg.EnumKey(key, i)
                         with winreg.OpenKey(key, subkey_name) as subkey:
                             try:
-                                # Skip hidden system dependencies
+                                # Skip completely hidden background subcomponents
                                 try:
                                     is_system = winreg.QueryValueEx(subkey, "SystemComponent")[0]
                                     if is_system == 1:
@@ -37,8 +37,15 @@ def get_classic_apps():
                                     pass
 
                                 app_name = winreg.QueryValueEx(subkey, "DisplayName")[0]
-                                if app_name:
-                                    software_list.add(app_name.strip())
+                                
+                                # Extract the real machine version string natively
+                                try:
+                                    version = winreg.QueryValueEx(subkey, "DisplayVersion")[0]
+                                except OSError:
+                                    version = "Unknown"
+
+                                if app_name and app_name.strip():
+                                    software_dict[app_name.strip()] = str(version).strip()
                             except OSError:
                                 pass
                     except OSError:
@@ -46,31 +53,58 @@ def get_classic_apps():
         except OSError:
             pass
             
-    return software_list
+    return software_dict
 
 def get_store_apps():
-    """Reads modern UWP apps, filtering out core system frameworks."""
-    software_list = set()
+    """Reads modern UWP apps, dropping internal code runtimes but KEEPING Notepad/Calculator."""
+    software_dict = {}
     try:
-        command = 'powershell.exe -NoProfile -Command "Get-AppxPackage | Where-Object { -not $_.IsFramework -and $_.NonRemovable -eq $false } | Select-Object -ExpandProperty Name"'
-        output = subprocess.check_output(command, text=True, stderr=subprocess.DEVNULL)
+        # We fetch Name and Version string tokens using a clean PowerShell custom format array
+        command = 'powershell.exe -NoProfile -Command "Get-AppxPackage | Where-Object { -not $_.IsFramework } | Select-Object Name, Version | ConvertTo-Json"'
+        output = subprocess.check_output(command, text=True, stderr=subprocess.DEVNULL).strip()
         
-        for line in output.split('\n'):
-            clean_name = line.strip()
-            # Skip raw internal Microsoft package names that slip through
-            if clean_name and not clean_name.startswith("Microsoft.Windows.") and not clean_name.startswith("Windows."):
-                software_list.add(clean_name)
+        if output:
+            parsed_packages = json.loads(output)
+            
+            # PowerShell ConvertTo-Json outputs a single dict if only 1 item exists, or a list if multiple items exist
+            if isinstance(parsed_packages, dict):
+                parsed_packages = [parsed_packages]
+                
+            for pkg in parsed_packages:
+                raw_name = pkg.get("Name", "")
+                version = pkg.get("Version", "Unknown")
+                
+                if not raw_name:
+                    continue
+                    
+                # Skip hidden internal system dependencies that have no user UI interface
+                if raw_name.startswith("Microsoft.VCLibs") or raw_name.startswith("Microsoft.NET."):
+                    continue
+                if "SecHealthUI" in raw_name or "波形" in raw_name:
+                    continue
+                    
+                # Standardize displaying names nicely
+                if raw_name == "Microsoft.WindowsNotepad":
+                    clean_name = "Notepad (App)"
+                elif raw_name == "Microsoft.WindowsCalculator":
+                    clean_name = "Calculator"
+                elif raw_name == "Microsoft.MSPaint":
+                    clean_name = "Paint"
+                else:
+                    clean_name = raw_name
+                    
+                software_dict[clean_name] = str(version).strip()
     except Exception:
         pass
         
-    return software_list
+    return software_dict
 
-def send_to_server(machine_id, software_list):
-    """Packages the data as JSON matching the Master Architecture."""
+def send_to_server(machine_id, software_data):
+    """Packages the data as a clean dictionary matching our new backend contract schema."""
     payload = {
         "company_id": "mohammad_corp_test",  
         "machine_id": machine_id,            
-        "software_list": list(software_list)
+        "software_data": software_data  # Changed from software_list to dictionary map
     }
     
     data = json.dumps(payload).encode('utf-8')
@@ -90,23 +124,26 @@ def send_to_server(machine_id, software_list):
         return False
 
 if __name__ == "__main__":
-    print("Gathering Windows software inventory...")
+    print("Gathering Windows software inventory with real versions...")
     machine_id = socket.gethostname()
     
-    all_apps = set()
-    all_apps.update(get_classic_apps())
-    all_apps.update(get_store_apps())
+    # Combine everything into our dictionary map payload tracker
+    all_software_data = {}
     
-    print(f"Found {len(all_apps)} total applications. Sending to LicenseAudit server...")
-    success = send_to_server(machine_id, all_apps)
+    # Merges items safely (UWP apps will override or supplement win32 arrays cleanly)
+    all_software_data.update(get_classic_apps())
+    all_software_data.update(get_store_apps())
     
-    # Show dialog based on result
+    print(f"Found {len(all_software_data)} total applications. Sending to LicenseAudit server...")
+    success = send_to_server(machine_id, all_software_data)
+    
+    # Show dialog box results notification anchor
     root = tk.Tk()
-    root.withdraw()  # Hide the main window
+    root.withdraw() 
     
     if success:
         messagebox.showinfo("Status", "200\nSuccessfully")
     else:
         messagebox.showerror("Status", "Wrong")
-    
+        
     root.destroy()
