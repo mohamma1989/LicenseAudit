@@ -1,59 +1,98 @@
-import os
+import subprocess
 import json
 import socket
 import urllib.request
 import urllib.error
+import os
 
 # Configuration
 SERVER_URL = "https://licenseaudit.onrender.com/api/upload_scan"
 
-def get_installed_software():
-    software_set = set()
-
-    # These are the 3 standard locations where Linux stores "Start Menu" app shortcuts
-    desktop_dirs = [
-        "/usr/share/applications",              # System-wide apt/dpkg apps
-        "/var/lib/snapd/desktop/applications",  # Snap apps
-        os.path.expanduser("~/.local/share/applications"),  # User-specific flatpaks/apps
-    ]
-
-    for directory in desktop_dirs:
-        if not os.path.exists(directory):
-            continue
-
-        for filename in os.listdir(directory):
-            if filename.endswith(".desktop"):
-                filepath = os.path.join(directory, filename)
-                try:
-                    with open(filepath, "r", encoding="utf-8") as f:
-                        lines = f.readlines()
-                    
-                    # Skip hidden system utilities
-                    if any("NoDisplay=true" in line for line in lines):
+def get_debian_apps():
+    """Fetches native apps on Debian/Ubuntu/Mint using dpkg-query."""
+    apps = {}
+    if os.path.exists("/usr/bin/dpkg-query"):
+        try:
+            # Output format: Package_Name|Version
+            cmd = "dpkg-query -W -f='${Package}|${Version}\n'"
+            output = subprocess.check_output(cmd, shell=True, text=True, stderr=subprocess.DEVNULL)
+            for line in output.split("\n"):
+                if "|" in line:
+                    name, version = line.strip().split("|", 1)
+                    # Filter out tiny internal library components to keep data clean
+                    if name.startswith("lib") or "-dev" in name or ":amd64" in name:
                         continue
-                        
-                    for line in lines:
-                        if line.startswith("Name="):
-                            clean_name = line.strip().split("=", 1)[1]
-                            software_set.add(clean_name)
-                            break  
-                except Exception:
-                    pass
+                    apps[name] = version
+        except Exception:
+            pass
+    return apps
 
-    return list(software_set)
+def get_redhat_apps():
+    """Fetches native apps on Fedora/Red Hat/CentOS using rpm."""
+    apps = {}
+    if os.path.exists("/usr/bin/rpm"):
+        try:
+            # Output format: Package_Name|Version
+            cmd = "rpm -qa --qf '%{NAME}|%{VERSION}\n'"
+            output = subprocess.check_output(cmd, shell=True, text=True, stderr=subprocess.DEVNULL)
+            for line in output.split("\n"):
+                if "|" in line:
+                    name, version = line.strip().split("|", 1)
+                    if name.startswith("lib") or "-devel" in name:
+                        continue
+                    apps[name] = version
+        except Exception:
+            pass
+    return apps
 
-def send_to_server(machine_id, software_list):
+def get_snap_apps():
+    """Fetches modern containerized apps via Snap."""
+    apps = {}
+    if os.path.exists("/usr/bin/snap"):
+        try:
+            # snap list outputs columns; skip the header line
+            output = subprocess.check_output(["snap", "list"], text=True, stderr=subprocess.DEVNULL)
+            lines = output.strip().split("\n")
+            if len(lines) > 1:
+                for line in lines[1:]:
+                    parts = line.split()
+                    if len(parts) >= 2:
+                        name, version = parts[0], parts[1]
+                        # Append (Snap) so the admin knows the environment tracking medium
+                        apps[f"{name} (Snap)"] = version
+        except Exception:
+            pass
+    return apps
+
+def get_flatpak_apps():
+    """Fetches modern sandboxed apps via Flatpak."""
+    apps = {}
+    if os.path.exists("/usr/bin/flatpak"):
+        try:
+            # Output format: Application_ID|Version
+            cmd = "flatpak list --columns=application,version"
+            output = subprocess.check_output(cmd, shell=True, text=True, stderr=subprocess.DEVNULL)
+            for line in output.strip().split("\n"):
+                parts = line.split()
+                if len(parts) >= 1:
+                    name = parts[0]
+                    version = parts[1] if len(parts) > 1 else "Unknown"
+                    apps[f"{name} (Flatpak)"] = version
+        except Exception:
+            pass
+    return apps
+
+def send_to_server(machine_id, software_data):
+    """Packages the data and transmits it to your FastAPI pipeline on Render."""
     payload = {
-        "company_id": "mohammad_corp_test",  # Identifies the client anchor context
-        "machine_id": machine_id,            
-        "software_list": software_list
+        "company_id": "mohammad_corp_test",
+        "machine_id": machine_id,
+        "software_data": software_data
     }
-
-    data = json.dumps(payload).encode("utf-8")
-    req = urllib.request.Request(
-        SERVER_URL, data=data, headers={"Content-Type": "application/json"}
-    )
-
+    
+    data = json.dumps(payload).encode('utf-8')
+    req = urllib.request.Request(SERVER_URL, data=data, headers={'Content-Type': 'application/json'})
+    
     try:
         response = urllib.request.urlopen(req)
         print(f"Success! Server response: {response.read().decode('utf-8')}")
@@ -68,11 +107,20 @@ def send_to_server(machine_id, software_list):
         return False
 
 if __name__ == "__main__":
-    print("Gathering Linux software inventory...")
-    machine_id = socket.gethostname()  
-    apps = get_installed_software()
-
-    print(f"Found {len(apps)} applications. Sending to LicenseAudit server...")
-    success = send_to_server(machine_id, apps)
-    if not success:
-        raise SystemExit(1)
+    print("Gathering Linux software inventory with exact version hashes...")
+    machine_id = socket.gethostname()
+    
+    all_software_data = {}
+    
+    # Run targeted collection checks (Safe: missing binaries exit gracefully)
+    all_software_data.update(get_debian_apps())
+    all_software_data.update(get_redhat_apps())
+    all_software_data.update(get_snap_apps())
+    all_software_data.update(get_flatpak_apps())
+    
+    print(f"Found {len(all_software_data)} total assets. Sending to LicenseAudit server...")
+    
+    if all_software_data:
+        send_to_server(machine_id, all_software_data)
+    else:
+        print("Error: No applications could be found on this system configuration.")
