@@ -1,0 +1,1059 @@
+module.exports = [
+"[project]/Desktop/LicenseAudit/frontend/node_modules/.pnpm/@base-ui+react@1.5.0_@date-fns+tz@1.4.1_@types+react@19.2.14_date-fns@4.1.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/@base-ui/react/esm/field/index.parts.js [app-ssr] (ecmascript) <locals>", ((__turbopack_context__) => {
+"use strict";
+
+__turbopack_context__.s([]);
+;
+;
+;
+;
+;
+;
+;
+}),
+"[project]/Desktop/LicenseAudit/frontend/node_modules/.pnpm/@base-ui+react@1.5.0_@date-fns+tz@1.4.1_@types+react@19.2.14_date-fns@4.1.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/@base-ui/react/esm/field/control/FieldControlDataAttributes.js [app-ssr] (ecmascript)", ((__turbopack_context__) => {
+"use strict";
+
+__turbopack_context__.s([
+    "FieldControlDataAttributes",
+    ()=>FieldControlDataAttributes
+]);
+let FieldControlDataAttributes = /*#__PURE__*/ function(FieldControlDataAttributes) {
+    /**
+   * Present when the field is disabled.
+   */ FieldControlDataAttributes["disabled"] = "data-disabled";
+    /**
+   * Present when the field is in a valid state.
+   */ FieldControlDataAttributes["valid"] = "data-valid";
+    /**
+   * Present when the field is in an invalid state.
+   */ FieldControlDataAttributes["invalid"] = "data-invalid";
+    /**
+   * Present when the field has been touched.
+   */ FieldControlDataAttributes["touched"] = "data-touched";
+    /**
+   * Present when the field's value has changed.
+   */ FieldControlDataAttributes["dirty"] = "data-dirty";
+    /**
+   * Present when the field is filled.
+   */ FieldControlDataAttributes["filled"] = "data-filled";
+    /**
+   * Present when the field control is focused.
+   */ FieldControlDataAttributes["focused"] = "data-focused";
+    return FieldControlDataAttributes;
+}({});
+}),
+"[project]/Desktop/LicenseAudit/frontend/node_modules/.pnpm/@base-ui+react@1.5.0_@date-fns+tz@1.4.1_@types+react@19.2.14_date-fns@4.1.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/@base-ui/react/esm/field/utils/getCombinedFieldValidityData.js [app-ssr] (ecmascript)", ((__turbopack_context__) => {
+"use strict";
+
+/**
+ * Combines the field's client-side, stateful validity data with the external invalid state to
+ * determine the field's true validity.
+ */ __turbopack_context__.s([
+    "getCombinedFieldValidityData",
+    ()=>getCombinedFieldValidityData
+]);
+function getCombinedFieldValidityData(validityData, invalid) {
+    return {
+        ...validityData,
+        state: {
+            ...validityData.state,
+            valid: !invalid && validityData.state.valid
+        }
+    };
+}
+}),
+"[project]/Desktop/LicenseAudit/frontend/node_modules/.pnpm/@base-ui+react@1.5.0_@date-fns+tz@1.4.1_@types+react@19.2.14_date-fns@4.1.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/@base-ui/react/esm/field/root/useFieldValidation.js [app-ssr] (ecmascript)", ((__turbopack_context__) => {
+"use strict";
+
+__turbopack_context__.s([
+    "useFieldValidation",
+    ()=>useFieldValidation
+]);
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_$40$babel$2b$core$40$7$2e$29$2e$7_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/LicenseAudit/frontend/node_modules/.pnpm/next@16.2.6_@babel+core@7.29.7_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$utils$40$0$2e$2$2e$9_$40$types$2b$react$40$19$2e$2$2e$14_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$utils$2f$esm$2f$empty$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/LicenseAudit/frontend/node_modules/.pnpm/@base-ui+utils@0.2.9_@types+react@19.2.14_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/@base-ui/utils/esm/empty.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$utils$40$0$2e$2$2e$9_$40$types$2b$react$40$19$2e$2$2e$14_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$utils$2f$esm$2f$useTimeout$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/LicenseAudit/frontend/node_modules/.pnpm/@base-ui+utils@0.2.9_@types+react@19.2.14_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/@base-ui/utils/esm/useTimeout.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$utils$40$0$2e$2$2e$9_$40$types$2b$react$40$19$2e$2$2e$14_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$utils$2f$esm$2f$useStableCallback$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/LicenseAudit/frontend/node_modules/.pnpm/@base-ui+utils@0.2.9_@types+react@19.2.14_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/@base-ui/utils/esm/useStableCallback.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$react$40$1$2e$5$2e$0_$40$date$2d$fns$2b$tz$40$1$2e$4$2e$1_$40$types$2b$react$40$19$2e$2$2e$14_date$2d$fns$40$4$2e$1$2e$0_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$react$2f$esm$2f$internals$2f$labelable$2d$provider$2f$LabelableContext$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/LicenseAudit/frontend/node_modules/.pnpm/@base-ui+react@1.5.0_@date-fns+tz@1.4.1_@types+react@19.2.14_date-fns@4.1.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/@base-ui/react/esm/internals/labelable-provider/LabelableContext.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$react$40$1$2e$5$2e$0_$40$date$2d$fns$2b$tz$40$1$2e$4$2e$1_$40$types$2b$react$40$19$2e$2$2e$14_date$2d$fns$40$4$2e$1$2e$0_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$react$2f$esm$2f$merge$2d$props$2f$mergeProps$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/LicenseAudit/frontend/node_modules/.pnpm/@base-ui+react@1.5.0_@date-fns+tz@1.4.1_@types+react@19.2.14_date-fns@4.1.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/@base-ui/react/esm/merge-props/mergeProps.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$react$40$1$2e$5$2e$0_$40$date$2d$fns$2b$tz$40$1$2e$4$2e$1_$40$types$2b$react$40$19$2e$2$2e$14_date$2d$fns$40$4$2e$1$2e$0_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$react$2f$esm$2f$internals$2f$field$2d$constants$2f$constants$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/LicenseAudit/frontend/node_modules/.pnpm/@base-ui+react@1.5.0_@date-fns+tz@1.4.1_@types+react@19.2.14_date-fns@4.1.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/@base-ui/react/esm/internals/field-constants/constants.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$react$40$1$2e$5$2e$0_$40$date$2d$fns$2b$tz$40$1$2e$4$2e$1_$40$types$2b$react$40$19$2e$2$2e$14_date$2d$fns$40$4$2e$1$2e$0_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$react$2f$esm$2f$internals$2f$form$2d$context$2f$FormContext$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/LicenseAudit/frontend/node_modules/.pnpm/@base-ui+react@1.5.0_@date-fns+tz@1.4.1_@types+react@19.2.14_date-fns@4.1.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/@base-ui/react/esm/internals/form-context/FormContext.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$react$40$1$2e$5$2e$0_$40$date$2d$fns$2b$tz$40$1$2e$4$2e$1_$40$types$2b$react$40$19$2e$2$2e$14_date$2d$fns$40$4$2e$1$2e$0_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$react$2f$esm$2f$field$2f$utils$2f$getCombinedFieldValidityData$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/LicenseAudit/frontend/node_modules/.pnpm/@base-ui+react@1.5.0_@date-fns+tz@1.4.1_@types+react@19.2.14_date-fns@4.1.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/@base-ui/react/esm/field/utils/getCombinedFieldValidityData.js [app-ssr] (ecmascript)");
+'use client';
+;
+;
+;
+;
+;
+;
+;
+;
+;
+const validityKeys = Object.keys(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$react$40$1$2e$5$2e$0_$40$date$2d$fns$2b$tz$40$1$2e$4$2e$1_$40$types$2b$react$40$19$2e$2$2e$14_date$2d$fns$40$4$2e$1$2e$0_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$react$2f$esm$2f$internals$2f$field$2d$constants$2f$constants$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["DEFAULT_VALIDITY_STATE"]);
+function isOnlyValueMissing(state) {
+    if (!state || state.valid || !state.valueMissing) {
+        return false;
+    }
+    let onlyValueMissing = false;
+    for (const key of validityKeys){
+        if (key === 'valid') {
+            continue;
+        }
+        if (key === 'valueMissing') {
+            onlyValueMissing = state[key];
+        }
+        if (state[key]) {
+            onlyValueMissing = false;
+        }
+    }
+    return onlyValueMissing;
+}
+function useFieldValidation(params) {
+    const { formRef, clearErrors } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$react$40$1$2e$5$2e$0_$40$date$2d$fns$2b$tz$40$1$2e$4$2e$1_$40$types$2b$react$40$19$2e$2$2e$14_date$2d$fns$40$4$2e$1$2e$0_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$react$2f$esm$2f$internals$2f$form$2d$context$2f$FormContext$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useFormContext"])();
+    const { setValidityData, validate, validityData, validationDebounceTime, invalid, markedDirtyRef, state, name, shouldValidateOnChange, getRegisteredFieldId } = params;
+    const { controlId, getDescriptionProps } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$react$40$1$2e$5$2e$0_$40$date$2d$fns$2b$tz$40$1$2e$4$2e$1_$40$types$2b$react$40$19$2e$2$2e$14_date$2d$fns$40$4$2e$1$2e$0_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$react$2f$esm$2f$internals$2f$labelable$2d$provider$2f$LabelableContext$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useLabelableContext"])();
+    const timeout = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$utils$40$0$2e$2$2e$9_$40$types$2b$react$40$19$2e$2$2e$14_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$utils$2f$esm$2f$useTimeout$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useTimeout"])();
+    const inputRef = __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_$40$babel$2b$core$40$7$2e$29$2e$7_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useRef"](null);
+    const commit = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$utils$40$0$2e$2$2e$9_$40$types$2b$react$40$19$2e$2$2e$14_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$utils$2f$esm$2f$useStableCallback$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useStableCallback"])(async (value, revalidate = false)=>{
+        const element = inputRef.current;
+        if (!element) {
+            return;
+        }
+        function updateRegisteredFieldValidity(nextValidityData, externalInvalid = invalid) {
+            const fieldId = getRegisteredFieldId() ?? controlId;
+            if (fieldId == null) {
+                return;
+            }
+            const currentFieldData = formRef.current.fields.get(fieldId);
+            if (!currentFieldData) {
+                return;
+            }
+            const validityDataWithFormErrors = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$react$40$1$2e$5$2e$0_$40$date$2d$fns$2b$tz$40$1$2e$4$2e$1_$40$types$2b$react$40$19$2e$2$2e$14_date$2d$fns$40$4$2e$1$2e$0_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$react$2f$esm$2f$field$2f$utils$2f$getCombinedFieldValidityData$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["getCombinedFieldValidityData"])(nextValidityData, externalInvalid);
+            formRef.current.fields.set(fieldId, {
+                ...currentFieldData,
+                validityData: validityDataWithFormErrors
+            });
+        }
+        if (revalidate) {
+            if (state.valid !== false) {
+                return;
+            }
+            const currentNativeValidity = element.validity;
+            if (!currentNativeValidity.valueMissing) {
+                // The 'valueMissing' (required) condition has been resolved by the user typing.
+                // Temporarily mark the field as valid for this onChange event.
+                // Other native errors (e.g., typeMismatch) will be caught by full validation on blur or submit.
+                const nextValidityData = {
+                    value,
+                    state: {
+                        ...__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$react$40$1$2e$5$2e$0_$40$date$2d$fns$2b$tz$40$1$2e$4$2e$1_$40$types$2b$react$40$19$2e$2$2e$14_date$2d$fns$40$4$2e$1$2e$0_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$react$2f$esm$2f$internals$2f$field$2d$constants$2f$constants$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["DEFAULT_VALIDITY_STATE"],
+                        valid: true
+                    },
+                    error: '',
+                    errors: [],
+                    initialValue: validityData.initialValue
+                };
+                element.setCustomValidity('');
+                // The required value is now present; ignore stale external invalid state for this pass.
+                updateRegisteredFieldValidity(nextValidityData, false);
+                setValidityData(nextValidityData);
+                return;
+            }
+            // Value is still missing, or other conditions apply.
+            // Let's use a representation of current validity for isOnlyValueMissing.
+            const currentNativeValidityObject = validityKeys.reduce((acc, key)=>{
+                acc[key] = currentNativeValidity[key];
+                return acc;
+            }, {});
+            // If it's (still) natively invalid due to something other than just valueMissing,
+            // then bail from this revalidation on change to avoid "scolding" for other errors.
+            if (!currentNativeValidityObject.valid && !isOnlyValueMissing(currentNativeValidityObject)) {
+                return;
+            }
+        // If valueMissing is still true AND it's the only issue, or if the field is now natively valid,
+        // let it fall through to the main validation logic below.
+        }
+        function getState(el) {
+            const computedState = validityKeys.reduce((acc, key)=>{
+                acc[key] = el.validity[key];
+                return acc;
+            }, {});
+            let hasOnlyValueMissingError = false;
+            for (const key of validityKeys){
+                if (key === 'valid') {
+                    continue;
+                }
+                if (key === 'valueMissing' && computedState[key]) {
+                    hasOnlyValueMissingError = true;
+                } else if (computedState[key]) {
+                    return computedState;
+                }
+            }
+            // Only make `valueMissing` mark the field invalid if it's been changed
+            // to reduce error noise.
+            if (hasOnlyValueMissingError && !markedDirtyRef.current) {
+                computedState.valid = true;
+                computedState.valueMissing = false;
+            }
+            return computedState;
+        }
+        timeout.clear();
+        let result = null;
+        let validationErrors = [];
+        const nextState = getState(element);
+        let defaultValidationMessage;
+        const validateOnChange = shouldValidateOnChange();
+        if (element.validationMessage && !validateOnChange) {
+            // not validating on change, if there is a `validationMessage` from
+            // native validity, set errors and skip calling the custom validate fn
+            defaultValidationMessage = element.validationMessage;
+            validationErrors = [
+                element.validationMessage
+            ];
+        } else {
+            // call the validate function because either
+            // - validating on change, or
+            // - native constraint validations passed, custom validity check is next
+            const formValues = Array.from(formRef.current.fields.values()).reduce((acc, field)=>{
+                if (field.name) {
+                    acc[field.name] = field.getValue();
+                }
+                return acc;
+            }, {});
+            const resultOrPromise = validate(value, formValues);
+            if (typeof resultOrPromise === 'object' && resultOrPromise !== null && 'then' in resultOrPromise) {
+                result = await resultOrPromise;
+            } else {
+                result = resultOrPromise;
+            }
+            if (result !== null) {
+                nextState.valid = false;
+                nextState.customError = true;
+                if (Array.isArray(result)) {
+                    validationErrors = result;
+                    element.setCustomValidity(result.join('\n'));
+                } else if (result) {
+                    validationErrors = [
+                        result
+                    ];
+                    element.setCustomValidity(result);
+                }
+            } else if (validateOnChange) {
+                // validate function returned no errors, if validating on change
+                // we need to clear the custom validity state
+                element.setCustomValidity('');
+                nextState.customError = false;
+                if (element.validationMessage) {
+                    defaultValidationMessage = element.validationMessage;
+                    validationErrors = [
+                        element.validationMessage
+                    ];
+                } else if (element.validity.valid && !nextState.valid) {
+                    nextState.valid = true;
+                }
+            }
+        }
+        const nextValidityData = {
+            value,
+            state: nextState,
+            error: defaultValidationMessage ?? (Array.isArray(result) ? result[0] : result ?? ''),
+            errors: validationErrors,
+            initialValue: validityData.initialValue
+        };
+        // Keep Form-level errors part of overall field validity for submit blocking/focus logic.
+        updateRegisteredFieldValidity(nextValidityData);
+        setValidityData(nextValidityData);
+    });
+    const getValidationProps = __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_$40$babel$2b$core$40$7$2e$29$2e$7_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useCallback"]((externalProps = {})=>(0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$react$40$1$2e$5$2e$0_$40$date$2d$fns$2b$tz$40$1$2e$4$2e$1_$40$types$2b$react$40$19$2e$2$2e$14_date$2d$fns$40$4$2e$1$2e$0_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$react$2f$esm$2f$merge$2d$props$2f$mergeProps$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mergeProps"])(getDescriptionProps, state.valid === false ? {
+            'aria-invalid': true
+        } : __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$utils$40$0$2e$2$2e$9_$40$types$2b$react$40$19$2e$2$2e$14_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$utils$2f$esm$2f$empty$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["EMPTY_OBJECT"], externalProps), [
+        getDescriptionProps,
+        state.valid
+    ]);
+    const getInputValidationProps = __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_$40$babel$2b$core$40$7$2e$29$2e$7_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useCallback"]((externalProps = {})=>(0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$react$40$1$2e$5$2e$0_$40$date$2d$fns$2b$tz$40$1$2e$4$2e$1_$40$types$2b$react$40$19$2e$2$2e$14_date$2d$fns$40$4$2e$1$2e$0_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$react$2f$esm$2f$merge$2d$props$2f$mergeProps$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["mergeProps"])({
+            onChange (event) {
+                // Workaround for https://github.com/facebook/react/issues/9023
+                if (event.nativeEvent.defaultPrevented) {
+                    return;
+                }
+                clearErrors(name);
+                if (!shouldValidateOnChange()) {
+                    commit(event.currentTarget.value, true);
+                    return;
+                }
+                // When validating on change, run client-side validation even if
+                // externally invalid
+                const element = event.currentTarget;
+                if (element.value === '') {
+                    // Ignore the debounce time for empty values.
+                    commit(element.value);
+                    return;
+                }
+                timeout.clear();
+                if (validationDebounceTime) {
+                    timeout.start(validationDebounceTime, ()=>{
+                        commit(element.value);
+                    });
+                } else {
+                    commit(element.value);
+                }
+            }
+        }, getValidationProps(externalProps)), [
+        getValidationProps,
+        clearErrors,
+        name,
+        timeout,
+        commit,
+        validationDebounceTime,
+        shouldValidateOnChange
+    ]);
+    return __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_$40$babel$2b$core$40$7$2e$29$2e$7_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useMemo"](()=>({
+            getValidationProps,
+            getInputValidationProps,
+            inputRef,
+            commit
+        }), [
+        getValidationProps,
+        getInputValidationProps,
+        commit
+    ]);
+}
+}),
+"[project]/Desktop/LicenseAudit/frontend/node_modules/.pnpm/@base-ui+react@1.5.0_@date-fns+tz@1.4.1_@types+react@19.2.14_date-fns@4.1.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/@base-ui/react/esm/field/root/FieldRoot.js [app-ssr] (ecmascript)", ((__turbopack_context__) => {
+"use strict";
+
+__turbopack_context__.s([
+    "FieldRoot",
+    ()=>FieldRoot
+]);
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_$40$babel$2b$core$40$7$2e$29$2e$7_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/LicenseAudit/frontend/node_modules/.pnpm/next@16.2.6_@babel+core@7.29.7_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$utils$40$0$2e$2$2e$9_$40$types$2b$react$40$19$2e$2$2e$14_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$utils$2f$esm$2f$useStableCallback$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/LicenseAudit/frontend/node_modules/.pnpm/@base-ui+utils@0.2.9_@types+react@19.2.14_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/@base-ui/utils/esm/useStableCallback.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$react$40$1$2e$5$2e$0_$40$date$2d$fns$2b$tz$40$1$2e$4$2e$1_$40$types$2b$react$40$19$2e$2$2e$14_date$2d$fns$40$4$2e$1$2e$0_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$react$2f$esm$2f$internals$2f$field$2d$root$2d$context$2f$FieldRootContext$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/LicenseAudit/frontend/node_modules/.pnpm/@base-ui+react@1.5.0_@date-fns+tz@1.4.1_@types+react@19.2.14_date-fns@4.1.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/@base-ui/react/esm/internals/field-root-context/FieldRootContext.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$react$40$1$2e$5$2e$0_$40$date$2d$fns$2b$tz$40$1$2e$4$2e$1_$40$types$2b$react$40$19$2e$2$2e$14_date$2d$fns$40$4$2e$1$2e$0_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$react$2f$esm$2f$internals$2f$field$2d$constants$2f$constants$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/LicenseAudit/frontend/node_modules/.pnpm/@base-ui+react@1.5.0_@date-fns+tz@1.4.1_@types+react@19.2.14_date-fns@4.1.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/@base-ui/react/esm/internals/field-constants/constants.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$react$40$1$2e$5$2e$0_$40$date$2d$fns$2b$tz$40$1$2e$4$2e$1_$40$types$2b$react$40$19$2e$2$2e$14_date$2d$fns$40$4$2e$1$2e$0_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$react$2f$esm$2f$fieldset$2f$root$2f$FieldsetRootContext$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/LicenseAudit/frontend/node_modules/.pnpm/@base-ui+react@1.5.0_@date-fns+tz@1.4.1_@types+react@19.2.14_date-fns@4.1.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/@base-ui/react/esm/fieldset/root/FieldsetRootContext.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$react$40$1$2e$5$2e$0_$40$date$2d$fns$2b$tz$40$1$2e$4$2e$1_$40$types$2b$react$40$19$2e$2$2e$14_date$2d$fns$40$4$2e$1$2e$0_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$react$2f$esm$2f$internals$2f$form$2d$context$2f$FormContext$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/LicenseAudit/frontend/node_modules/.pnpm/@base-ui+react@1.5.0_@date-fns+tz@1.4.1_@types+react@19.2.14_date-fns@4.1.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/@base-ui/react/esm/internals/form-context/FormContext.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$react$40$1$2e$5$2e$0_$40$date$2d$fns$2b$tz$40$1$2e$4$2e$1_$40$types$2b$react$40$19$2e$2$2e$14_date$2d$fns$40$4$2e$1$2e$0_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$react$2f$esm$2f$internals$2f$labelable$2d$provider$2f$LabelableProvider$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/LicenseAudit/frontend/node_modules/.pnpm/@base-ui+react@1.5.0_@date-fns+tz@1.4.1_@types+react@19.2.14_date-fns@4.1.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/@base-ui/react/esm/internals/labelable-provider/LabelableProvider.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$react$40$1$2e$5$2e$0_$40$date$2d$fns$2b$tz$40$1$2e$4$2e$1_$40$types$2b$react$40$19$2e$2$2e$14_date$2d$fns$40$4$2e$1$2e$0_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$react$2f$esm$2f$internals$2f$useRenderElement$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/LicenseAudit/frontend/node_modules/.pnpm/@base-ui+react@1.5.0_@date-fns+tz@1.4.1_@types+react@19.2.14_date-fns@4.1.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/@base-ui/react/esm/internals/useRenderElement.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$react$40$1$2e$5$2e$0_$40$date$2d$fns$2b$tz$40$1$2e$4$2e$1_$40$types$2b$react$40$19$2e$2$2e$14_date$2d$fns$40$4$2e$1$2e$0_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$react$2f$esm$2f$field$2f$root$2f$useFieldValidation$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/LicenseAudit/frontend/node_modules/.pnpm/@base-ui+react@1.5.0_@date-fns+tz@1.4.1_@types+react@19.2.14_date-fns@4.1.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/@base-ui/react/esm/field/root/useFieldValidation.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$react$40$1$2e$5$2e$0_$40$date$2d$fns$2b$tz$40$1$2e$4$2e$1_$40$types$2b$react$40$19$2e$2$2e$14_date$2d$fns$40$4$2e$1$2e$0_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$react$2f$esm$2f$internals$2f$field$2d$register$2d$control$2f$useFieldControlRegistration$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/LicenseAudit/frontend/node_modules/.pnpm/@base-ui+react@1.5.0_@date-fns+tz@1.4.1_@types+react@19.2.14_date-fns@4.1.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/@base-ui/react/esm/internals/field-register-control/useFieldControlRegistration.js [app-ssr] (ecmascript)");
+/**
+ * @internal
+ */ var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_$40$babel$2b$core$40$7$2e$29$2e$7_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/LicenseAudit/frontend/node_modules/.pnpm/next@16.2.6_@babel+core@7.29.7_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react-jsx-runtime.js [app-ssr] (ecmascript)");
+'use client';
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+const FieldRootInner = /*#__PURE__*/ __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_$40$babel$2b$core$40$7$2e$29$2e$7_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["forwardRef"](function FieldRootInner(componentProps, forwardedRef) {
+    const { errors, validationMode: formValidationMode, submitAttemptedRef } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$react$40$1$2e$5$2e$0_$40$date$2d$fns$2b$tz$40$1$2e$4$2e$1_$40$types$2b$react$40$19$2e$2$2e$14_date$2d$fns$40$4$2e$1$2e$0_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$react$2f$esm$2f$internals$2f$form$2d$context$2f$FormContext$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useFormContext"])();
+    const { render, className, validate: validateProp, validationDebounceTime = 0, validationMode = formValidationMode, name, disabled: disabledProp = false, invalid: invalidProp, dirty: dirtyProp, touched: touchedProp, actionsRef, style, ...elementProps } = componentProps;
+    const { disabled: disabledFieldset } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$react$40$1$2e$5$2e$0_$40$date$2d$fns$2b$tz$40$1$2e$4$2e$1_$40$types$2b$react$40$19$2e$2$2e$14_date$2d$fns$40$4$2e$1$2e$0_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$react$2f$esm$2f$fieldset$2f$root$2f$FieldsetRootContext$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useFieldsetRootContext"])();
+    const validate = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$utils$40$0$2e$2$2e$9_$40$types$2b$react$40$19$2e$2$2e$14_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$utils$2f$esm$2f$useStableCallback$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useStableCallback"])(validateProp || (()=>null));
+    const disabled = disabledFieldset || disabledProp;
+    const [touchedState, setTouchedUnwrapped] = __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_$40$babel$2b$core$40$7$2e$29$2e$7_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"](false);
+    const [dirtyState, setDirtyUnwrapped] = __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_$40$babel$2b$core$40$7$2e$29$2e$7_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"](false);
+    const [filled, setFilled] = __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_$40$babel$2b$core$40$7$2e$29$2e$7_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"](false);
+    const [focused, setFocused] = __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_$40$babel$2b$core$40$7$2e$29$2e$7_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"](false);
+    const dirty = dirtyProp ?? dirtyState;
+    const touched = touchedProp ?? touchedState;
+    const markedDirtyRef = __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_$40$babel$2b$core$40$7$2e$29$2e$7_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useRef"](false);
+    const registeredFieldIdRef = __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_$40$babel$2b$core$40$7$2e$29$2e$7_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useRef"](undefined);
+    const getRegisteredFieldId = __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_$40$babel$2b$core$40$7$2e$29$2e$7_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useCallback"](()=>registeredFieldIdRef.current, []);
+    const setRegisteredFieldId = __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_$40$babel$2b$core$40$7$2e$29$2e$7_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useCallback"]((id)=>{
+        registeredFieldIdRef.current = id;
+    }, []);
+    const setDirty = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$utils$40$0$2e$2$2e$9_$40$types$2b$react$40$19$2e$2$2e$14_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$utils$2f$esm$2f$useStableCallback$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useStableCallback"])((value)=>{
+        if (dirtyProp !== undefined) {
+            return;
+        }
+        if (value) {
+            markedDirtyRef.current = true;
+        }
+        setDirtyUnwrapped(value);
+    });
+    const setTouched = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$utils$40$0$2e$2$2e$9_$40$types$2b$react$40$19$2e$2$2e$14_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$utils$2f$esm$2f$useStableCallback$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useStableCallback"])((value)=>{
+        if (touchedProp !== undefined) {
+            return;
+        }
+        setTouchedUnwrapped(value);
+    });
+    const shouldValidateOnChange = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$utils$40$0$2e$2$2e$9_$40$types$2b$react$40$19$2e$2$2e$14_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$utils$2f$esm$2f$useStableCallback$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useStableCallback"])(()=>validationMode === 'onChange' || validationMode === 'onSubmit' && submitAttemptedRef.current);
+    const hasFormError = !!name && Object.hasOwn(errors, name) && errors[name] !== undefined;
+    const invalid = invalidProp === true || hasFormError;
+    const [validityData, setValidityData] = __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_$40$babel$2b$core$40$7$2e$29$2e$7_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"]({
+        state: __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$react$40$1$2e$5$2e$0_$40$date$2d$fns$2b$tz$40$1$2e$4$2e$1_$40$types$2b$react$40$19$2e$2$2e$14_date$2d$fns$40$4$2e$1$2e$0_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$react$2f$esm$2f$internals$2f$field$2d$constants$2f$constants$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["DEFAULT_VALIDITY_STATE"],
+        error: '',
+        errors: [],
+        value: null,
+        initialValue: null
+    });
+    const valid = !invalid && validityData.state.valid;
+    const state = __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_$40$babel$2b$core$40$7$2e$29$2e$7_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useMemo"](()=>({
+            disabled,
+            touched,
+            dirty,
+            valid,
+            filled,
+            focused
+        }), [
+        disabled,
+        touched,
+        dirty,
+        valid,
+        filled,
+        focused
+    ]);
+    const validation = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$react$40$1$2e$5$2e$0_$40$date$2d$fns$2b$tz$40$1$2e$4$2e$1_$40$types$2b$react$40$19$2e$2$2e$14_date$2d$fns$40$4$2e$1$2e$0_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$react$2f$esm$2f$field$2f$root$2f$useFieldValidation$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useFieldValidation"])({
+        setValidityData,
+        validate,
+        validityData,
+        validationDebounceTime,
+        invalid,
+        markedDirtyRef,
+        state,
+        name,
+        shouldValidateOnChange,
+        getRegisteredFieldId
+    });
+    const validityValue = validityData.value;
+    const handleImperativeValidate = __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_$40$babel$2b$core$40$7$2e$29$2e$7_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useCallback"](()=>{
+        markedDirtyRef.current = true;
+        validation.commit(validityValue);
+    }, [
+        validation,
+        validityValue
+    ]);
+    const registerFieldControl = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$react$40$1$2e$5$2e$0_$40$date$2d$fns$2b$tz$40$1$2e$4$2e$1_$40$types$2b$react$40$19$2e$2$2e$14_date$2d$fns$40$4$2e$1$2e$0_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$react$2f$esm$2f$internals$2f$field$2d$register$2d$control$2f$useFieldControlRegistration$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useFieldControlRegistration"])({
+        commit: validation.commit,
+        invalid,
+        markedDirtyRef,
+        name,
+        setRegisteredFieldId,
+        setValidityData,
+        validityData
+    });
+    __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_$40$babel$2b$core$40$7$2e$29$2e$7_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useImperativeHandle"](actionsRef, ()=>({
+            validate: handleImperativeValidate
+        }), [
+        handleImperativeValidate
+    ]);
+    const contextValue = __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_$40$babel$2b$core$40$7$2e$29$2e$7_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useMemo"](()=>({
+            invalid,
+            name,
+            validityData,
+            setValidityData,
+            disabled,
+            touched,
+            setTouched,
+            dirty,
+            setDirty,
+            filled,
+            setFilled,
+            focused,
+            setFocused,
+            validate,
+            validationMode,
+            validationDebounceTime,
+            shouldValidateOnChange,
+            state,
+            markedDirtyRef,
+            registerFieldControl,
+            validation
+        }), [
+        invalid,
+        name,
+        validityData,
+        disabled,
+        touched,
+        setTouched,
+        dirty,
+        setDirty,
+        filled,
+        setFilled,
+        focused,
+        setFocused,
+        validate,
+        validationMode,
+        validationDebounceTime,
+        shouldValidateOnChange,
+        state,
+        registerFieldControl,
+        validation
+    ]);
+    const element = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$react$40$1$2e$5$2e$0_$40$date$2d$fns$2b$tz$40$1$2e$4$2e$1_$40$types$2b$react$40$19$2e$2$2e$14_date$2d$fns$40$4$2e$1$2e$0_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$react$2f$esm$2f$internals$2f$useRenderElement$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useRenderElement"])('div', componentProps, {
+        ref: forwardedRef,
+        state,
+        props: elementProps,
+        stateAttributesMapping: __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$react$40$1$2e$5$2e$0_$40$date$2d$fns$2b$tz$40$1$2e$4$2e$1_$40$types$2b$react$40$19$2e$2$2e$14_date$2d$fns$40$4$2e$1$2e$0_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$react$2f$esm$2f$internals$2f$field$2d$constants$2f$constants$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["fieldValidityMapping"]
+    });
+    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_$40$babel$2b$core$40$7$2e$29$2e$7_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsx"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$react$40$1$2e$5$2e$0_$40$date$2d$fns$2b$tz$40$1$2e$4$2e$1_$40$types$2b$react$40$19$2e$2$2e$14_date$2d$fns$40$4$2e$1$2e$0_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$react$2f$esm$2f$internals$2f$field$2d$root$2d$context$2f$FieldRootContext$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["FieldRootContext"].Provider, {
+        value: contextValue,
+        children: element
+    });
+});
+/**
+ * Groups all parts of the field.
+ * Renders a `<div>` element.
+ *
+ * Documentation: [Base UI Field](https://base-ui.com/react/components/field)
+ */ if ("TURBOPACK compile-time truthy", 1) FieldRootInner.displayName = "FieldRootInner";
+const FieldRoot = /*#__PURE__*/ __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_$40$babel$2b$core$40$7$2e$29$2e$7_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["forwardRef"](function FieldRoot(componentProps, forwardedRef) {
+    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_$40$babel$2b$core$40$7$2e$29$2e$7_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsx"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$react$40$1$2e$5$2e$0_$40$date$2d$fns$2b$tz$40$1$2e$4$2e$1_$40$types$2b$react$40$19$2e$2$2e$14_date$2d$fns$40$4$2e$1$2e$0_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$react$2f$esm$2f$internals$2f$labelable$2d$provider$2f$LabelableProvider$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["LabelableProvider"], {
+        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_$40$babel$2b$core$40$7$2e$29$2e$7_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsx"])(FieldRootInner, {
+            ...componentProps,
+            ref: forwardedRef
+        })
+    });
+});
+if ("TURBOPACK compile-time truthy", 1) FieldRoot.displayName = "FieldRoot";
+}),
+"[project]/Desktop/LicenseAudit/frontend/node_modules/.pnpm/@base-ui+react@1.5.0_@date-fns+tz@1.4.1_@types+react@19.2.14_date-fns@4.1.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/@base-ui/react/esm/field/label/FieldLabel.js [app-ssr] (ecmascript)", ((__turbopack_context__) => {
+"use strict";
+
+__turbopack_context__.s([
+    "FieldLabel",
+    ()=>FieldLabel
+]);
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_$40$babel$2b$core$40$7$2e$29$2e$7_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/LicenseAudit/frontend/node_modules/.pnpm/next@16.2.6_@babel+core@7.29.7_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$utils$40$0$2e$2$2e$9_$40$types$2b$react$40$19$2e$2$2e$14_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$utils$2f$esm$2f$error$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/LicenseAudit/frontend/node_modules/.pnpm/@base-ui+utils@0.2.9_@types+react@19.2.14_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/@base-ui/utils/esm/error.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$utils$40$0$2e$2$2e$9_$40$types$2b$react$40$19$2e$2$2e$14_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$utils$2f$esm$2f$safeReact$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/LicenseAudit/frontend/node_modules/.pnpm/@base-ui+utils@0.2.9_@types+react@19.2.14_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/@base-ui/utils/esm/safeReact.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$react$40$1$2e$5$2e$0_$40$date$2d$fns$2b$tz$40$1$2e$4$2e$1_$40$types$2b$react$40$19$2e$2$2e$14_date$2d$fns$40$4$2e$1$2e$0_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$react$2f$esm$2f$internals$2f$field$2d$root$2d$context$2f$FieldRootContext$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/LicenseAudit/frontend/node_modules/.pnpm/@base-ui+react@1.5.0_@date-fns+tz@1.4.1_@types+react@19.2.14_date-fns@4.1.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/@base-ui/react/esm/internals/field-root-context/FieldRootContext.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$react$40$1$2e$5$2e$0_$40$date$2d$fns$2b$tz$40$1$2e$4$2e$1_$40$types$2b$react$40$19$2e$2$2e$14_date$2d$fns$40$4$2e$1$2e$0_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$react$2f$esm$2f$internals$2f$field$2d$constants$2f$constants$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/LicenseAudit/frontend/node_modules/.pnpm/@base-ui+react@1.5.0_@date-fns+tz@1.4.1_@types+react@19.2.14_date-fns@4.1.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/@base-ui/react/esm/internals/field-constants/constants.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$react$40$1$2e$5$2e$0_$40$date$2d$fns$2b$tz$40$1$2e$4$2e$1_$40$types$2b$react$40$19$2e$2$2e$14_date$2d$fns$40$4$2e$1$2e$0_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$react$2f$esm$2f$internals$2f$useRenderElement$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/LicenseAudit/frontend/node_modules/.pnpm/@base-ui+react@1.5.0_@date-fns+tz@1.4.1_@types+react@19.2.14_date-fns@4.1.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/@base-ui/react/esm/internals/useRenderElement.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$react$40$1$2e$5$2e$0_$40$date$2d$fns$2b$tz$40$1$2e$4$2e$1_$40$types$2b$react$40$19$2e$2$2e$14_date$2d$fns$40$4$2e$1$2e$0_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$react$2f$esm$2f$internals$2f$labelable$2d$provider$2f$LabelableContext$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/LicenseAudit/frontend/node_modules/.pnpm/@base-ui+react@1.5.0_@date-fns+tz@1.4.1_@types+react@19.2.14_date-fns@4.1.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/@base-ui/react/esm/internals/labelable-provider/LabelableContext.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$react$40$1$2e$5$2e$0_$40$date$2d$fns$2b$tz$40$1$2e$4$2e$1_$40$types$2b$react$40$19$2e$2$2e$14_date$2d$fns$40$4$2e$1$2e$0_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$react$2f$esm$2f$internals$2f$labelable$2d$provider$2f$useLabel$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/LicenseAudit/frontend/node_modules/.pnpm/@base-ui+react@1.5.0_@date-fns+tz@1.4.1_@types+react@19.2.14_date-fns@4.1.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/@base-ui/react/esm/internals/labelable-provider/useLabel.js [app-ssr] (ecmascript)");
+'use client';
+;
+;
+;
+;
+;
+;
+;
+;
+const FieldLabel = /*#__PURE__*/ __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_$40$babel$2b$core$40$7$2e$29$2e$7_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["forwardRef"](function FieldLabel(componentProps, forwardedRef) {
+    const { render, className, style, id: idProp, nativeLabel = true, ...elementProps } = componentProps;
+    const fieldRootContext = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$react$40$1$2e$5$2e$0_$40$date$2d$fns$2b$tz$40$1$2e$4$2e$1_$40$types$2b$react$40$19$2e$2$2e$14_date$2d$fns$40$4$2e$1$2e$0_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$react$2f$esm$2f$internals$2f$field$2d$root$2d$context$2f$FieldRootContext$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useFieldRootContext"])(false);
+    const { labelId } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$react$40$1$2e$5$2e$0_$40$date$2d$fns$2b$tz$40$1$2e$4$2e$1_$40$types$2b$react$40$19$2e$2$2e$14_date$2d$fns$40$4$2e$1$2e$0_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$react$2f$esm$2f$internals$2f$labelable$2d$provider$2f$LabelableContext$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useLabelableContext"])();
+    const labelRef = __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_$40$babel$2b$core$40$7$2e$29$2e$7_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useRef"](null);
+    const labelProps = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$react$40$1$2e$5$2e$0_$40$date$2d$fns$2b$tz$40$1$2e$4$2e$1_$40$types$2b$react$40$19$2e$2$2e$14_date$2d$fns$40$4$2e$1$2e$0_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$react$2f$esm$2f$internals$2f$labelable$2d$provider$2f$useLabel$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useLabel"])({
+        id: labelId ?? idProp,
+        native: nativeLabel
+    });
+    if ("TURBOPACK compile-time truthy", 1) {
+        // eslint-disable-next-line react-hooks/rules-of-hooks
+        __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_$40$babel$2b$core$40$7$2e$29$2e$7_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"](()=>{
+            if (!labelRef.current) {
+                return;
+            }
+            const isLabelTag = labelRef.current.tagName === 'LABEL';
+            if (nativeLabel) {
+                if (!isLabelTag) {
+                    const ownerStackMessage = __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$utils$40$0$2e$2$2e$9_$40$types$2b$react$40$19$2e$2$2e$14_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$utils$2f$esm$2f$safeReact$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SafeReact"].captureOwnerStack?.() || '';
+                    const message = '<Field.Label> expected a <label> element because the `nativeLabel` prop is true. ' + 'Rendering a non-<label> disables native label association, so `htmlFor` will not ' + 'work. Use a real <label> in the `render` prop, or set `nativeLabel` to `false`.';
+                    (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$utils$40$0$2e$2$2e$9_$40$types$2b$react$40$19$2e$2$2e$14_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$utils$2f$esm$2f$error$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["error"])(`${message}${ownerStackMessage}`);
+                }
+            } else if (isLabelTag) {
+                const ownerStackMessage = __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$utils$40$0$2e$2$2e$9_$40$types$2b$react$40$19$2e$2$2e$14_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$utils$2f$esm$2f$safeReact$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["SafeReact"].captureOwnerStack?.() || '';
+                const message = '<Field.Label> expected a non-<label> element because the `nativeLabel` prop is false. ' + 'Rendering a <label> assumes native label behavior while Base UI treats it as ' + 'non-native, which can cause unexpected pointer behavior. Use a non-<label> in the ' + '`render` prop, or set `nativeLabel` to `true`.';
+                (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$utils$40$0$2e$2$2e$9_$40$types$2b$react$40$19$2e$2$2e$14_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$utils$2f$esm$2f$error$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["error"])(`${message}${ownerStackMessage}`);
+            }
+        }, [
+            nativeLabel
+        ]);
+    }
+    const element = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$react$40$1$2e$5$2e$0_$40$date$2d$fns$2b$tz$40$1$2e$4$2e$1_$40$types$2b$react$40$19$2e$2$2e$14_date$2d$fns$40$4$2e$1$2e$0_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$react$2f$esm$2f$internals$2f$useRenderElement$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useRenderElement"])('label', componentProps, {
+        ref: [
+            forwardedRef,
+            labelRef
+        ],
+        state: fieldRootContext.state,
+        props: [
+            labelProps,
+            elementProps
+        ],
+        stateAttributesMapping: __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$react$40$1$2e$5$2e$0_$40$date$2d$fns$2b$tz$40$1$2e$4$2e$1_$40$types$2b$react$40$19$2e$2$2e$14_date$2d$fns$40$4$2e$1$2e$0_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$react$2f$esm$2f$internals$2f$field$2d$constants$2f$constants$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["fieldValidityMapping"]
+    });
+    return element;
+});
+if ("TURBOPACK compile-time truthy", 1) FieldLabel.displayName = "FieldLabel";
+}),
+"[project]/Desktop/LicenseAudit/frontend/node_modules/.pnpm/@base-ui+react@1.5.0_@date-fns+tz@1.4.1_@types+react@19.2.14_date-fns@4.1.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/@base-ui/react/esm/field/error/FieldError.js [app-ssr] (ecmascript)", ((__turbopack_context__) => {
+"use strict";
+
+__turbopack_context__.s([
+    "FieldError",
+    ()=>FieldError
+]);
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_$40$babel$2b$core$40$7$2e$29$2e$7_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/LicenseAudit/frontend/node_modules/.pnpm/next@16.2.6_@babel+core@7.29.7_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$utils$40$0$2e$2$2e$9_$40$types$2b$react$40$19$2e$2$2e$14_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$utils$2f$esm$2f$useIsoLayoutEffect$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/LicenseAudit/frontend/node_modules/.pnpm/@base-ui+utils@0.2.9_@types+react@19.2.14_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/@base-ui/utils/esm/useIsoLayoutEffect.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$react$40$1$2e$5$2e$0_$40$date$2d$fns$2b$tz$40$1$2e$4$2e$1_$40$types$2b$react$40$19$2e$2$2e$14_date$2d$fns$40$4$2e$1$2e$0_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$react$2f$esm$2f$internals$2f$field$2d$root$2d$context$2f$FieldRootContext$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/LicenseAudit/frontend/node_modules/.pnpm/@base-ui+react@1.5.0_@date-fns+tz@1.4.1_@types+react@19.2.14_date-fns@4.1.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/@base-ui/react/esm/internals/field-root-context/FieldRootContext.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$react$40$1$2e$5$2e$0_$40$date$2d$fns$2b$tz$40$1$2e$4$2e$1_$40$types$2b$react$40$19$2e$2$2e$14_date$2d$fns$40$4$2e$1$2e$0_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$react$2f$esm$2f$internals$2f$labelable$2d$provider$2f$LabelableContext$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/LicenseAudit/frontend/node_modules/.pnpm/@base-ui+react@1.5.0_@date-fns+tz@1.4.1_@types+react@19.2.14_date-fns@4.1.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/@base-ui/react/esm/internals/labelable-provider/LabelableContext.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$react$40$1$2e$5$2e$0_$40$date$2d$fns$2b$tz$40$1$2e$4$2e$1_$40$types$2b$react$40$19$2e$2$2e$14_date$2d$fns$40$4$2e$1$2e$0_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$react$2f$esm$2f$internals$2f$field$2d$constants$2f$constants$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/LicenseAudit/frontend/node_modules/.pnpm/@base-ui+react@1.5.0_@date-fns+tz@1.4.1_@types+react@19.2.14_date-fns@4.1.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/@base-ui/react/esm/internals/field-constants/constants.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$react$40$1$2e$5$2e$0_$40$date$2d$fns$2b$tz$40$1$2e$4$2e$1_$40$types$2b$react$40$19$2e$2$2e$14_date$2d$fns$40$4$2e$1$2e$0_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$react$2f$esm$2f$internals$2f$form$2d$context$2f$FormContext$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/LicenseAudit/frontend/node_modules/.pnpm/@base-ui+react@1.5.0_@date-fns+tz@1.4.1_@types+react@19.2.14_date-fns@4.1.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/@base-ui/react/esm/internals/form-context/FormContext.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$react$40$1$2e$5$2e$0_$40$date$2d$fns$2b$tz$40$1$2e$4$2e$1_$40$types$2b$react$40$19$2e$2$2e$14_date$2d$fns$40$4$2e$1$2e$0_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$react$2f$esm$2f$internals$2f$useRenderElement$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/LicenseAudit/frontend/node_modules/.pnpm/@base-ui+react@1.5.0_@date-fns+tz@1.4.1_@types+react@19.2.14_date-fns@4.1.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/@base-ui/react/esm/internals/useRenderElement.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$react$40$1$2e$5$2e$0_$40$date$2d$fns$2b$tz$40$1$2e$4$2e$1_$40$types$2b$react$40$19$2e$2$2e$14_date$2d$fns$40$4$2e$1$2e$0_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$react$2f$esm$2f$internals$2f$useBaseUiId$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/LicenseAudit/frontend/node_modules/.pnpm/@base-ui+react@1.5.0_@date-fns+tz@1.4.1_@types+react@19.2.14_date-fns@4.1.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/@base-ui/react/esm/internals/useBaseUiId.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$react$40$1$2e$5$2e$0_$40$date$2d$fns$2b$tz$40$1$2e$4$2e$1_$40$types$2b$react$40$19$2e$2$2e$14_date$2d$fns$40$4$2e$1$2e$0_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$react$2f$esm$2f$internals$2f$useOpenChangeComplete$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/LicenseAudit/frontend/node_modules/.pnpm/@base-ui+react@1.5.0_@date-fns+tz@1.4.1_@types+react@19.2.14_date-fns@4.1.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/@base-ui/react/esm/internals/useOpenChangeComplete.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$react$40$1$2e$5$2e$0_$40$date$2d$fns$2b$tz$40$1$2e$4$2e$1_$40$types$2b$react$40$19$2e$2$2e$14_date$2d$fns$40$4$2e$1$2e$0_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$react$2f$esm$2f$internals$2f$stateAttributesMapping$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/LicenseAudit/frontend/node_modules/.pnpm/@base-ui+react@1.5.0_@date-fns+tz@1.4.1_@types+react@19.2.14_date-fns@4.1.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/@base-ui/react/esm/internals/stateAttributesMapping.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$react$40$1$2e$5$2e$0_$40$date$2d$fns$2b$tz$40$1$2e$4$2e$1_$40$types$2b$react$40$19$2e$2$2e$14_date$2d$fns$40$4$2e$1$2e$0_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$react$2f$esm$2f$internals$2f$useTransitionStatus$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/LicenseAudit/frontend/node_modules/.pnpm/@base-ui+react@1.5.0_@date-fns+tz@1.4.1_@types+react@19.2.14_date-fns@4.1.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/@base-ui/react/esm/internals/useTransitionStatus.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_$40$babel$2b$core$40$7$2e$29$2e$7_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/LicenseAudit/frontend/node_modules/.pnpm/next@16.2.6_@babel+core@7.29.7_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react-jsx-runtime.js [app-ssr] (ecmascript)");
+'use client';
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+const stateAttributesMapping = {
+    ...__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$react$40$1$2e$5$2e$0_$40$date$2d$fns$2b$tz$40$1$2e$4$2e$1_$40$types$2b$react$40$19$2e$2$2e$14_date$2d$fns$40$4$2e$1$2e$0_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$react$2f$esm$2f$internals$2f$field$2d$constants$2f$constants$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["fieldValidityMapping"],
+    ...__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$react$40$1$2e$5$2e$0_$40$date$2d$fns$2b$tz$40$1$2e$4$2e$1_$40$types$2b$react$40$19$2e$2$2e$14_date$2d$fns$40$4$2e$1$2e$0_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$react$2f$esm$2f$internals$2f$stateAttributesMapping$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["transitionStatusMapping"]
+};
+const FieldError = /*#__PURE__*/ __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_$40$babel$2b$core$40$7$2e$29$2e$7_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["forwardRef"](function FieldError(componentProps, forwardedRef) {
+    const { render, id: idProp, className, match, style, ...elementProps } = componentProps;
+    const id = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$react$40$1$2e$5$2e$0_$40$date$2d$fns$2b$tz$40$1$2e$4$2e$1_$40$types$2b$react$40$19$2e$2$2e$14_date$2d$fns$40$4$2e$1$2e$0_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$react$2f$esm$2f$internals$2f$useBaseUiId$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useBaseUiId"])(idProp);
+    const { validityData, state: fieldState, name } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$react$40$1$2e$5$2e$0_$40$date$2d$fns$2b$tz$40$1$2e$4$2e$1_$40$types$2b$react$40$19$2e$2$2e$14_date$2d$fns$40$4$2e$1$2e$0_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$react$2f$esm$2f$internals$2f$field$2d$root$2d$context$2f$FieldRootContext$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useFieldRootContext"])(false);
+    const { setMessageIds } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$react$40$1$2e$5$2e$0_$40$date$2d$fns$2b$tz$40$1$2e$4$2e$1_$40$types$2b$react$40$19$2e$2$2e$14_date$2d$fns$40$4$2e$1$2e$0_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$react$2f$esm$2f$internals$2f$labelable$2d$provider$2f$LabelableContext$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useLabelableContext"])();
+    const { errors } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$react$40$1$2e$5$2e$0_$40$date$2d$fns$2b$tz$40$1$2e$4$2e$1_$40$types$2b$react$40$19$2e$2$2e$14_date$2d$fns$40$4$2e$1$2e$0_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$react$2f$esm$2f$internals$2f$form$2d$context$2f$FormContext$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useFormContext"])();
+    const formError = name ? errors[name] : null;
+    const hasSpecificMatch = typeof match === 'string';
+    let rendered = false;
+    if (match === true) {
+        rendered = true;
+    } else if (hasSpecificMatch) {
+        rendered = Boolean(validityData.state[match]);
+    } else {
+        rendered = Boolean(formError) || validityData.state.valid === false;
+    }
+    const { mounted, transitionStatus, setMounted } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$react$40$1$2e$5$2e$0_$40$date$2d$fns$2b$tz$40$1$2e$4$2e$1_$40$types$2b$react$40$19$2e$2$2e$14_date$2d$fns$40$4$2e$1$2e$0_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$react$2f$esm$2f$internals$2f$useTransitionStatus$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useTransitionStatus"])(rendered);
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$utils$40$0$2e$2$2e$9_$40$types$2b$react$40$19$2e$2$2e$14_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$utils$2f$esm$2f$useIsoLayoutEffect$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useIsoLayoutEffect"])(()=>{
+        if (!rendered || !id) {
+            return undefined;
+        }
+        setMessageIds((v)=>v.concat(id));
+        return ()=>{
+            setMessageIds((v)=>v.filter((item)=>item !== id));
+        };
+    }, [
+        rendered,
+        id,
+        setMessageIds
+    ]);
+    const errorRef = __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_$40$babel$2b$core$40$7$2e$29$2e$7_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useRef"](null);
+    const [lastRenderedMessage, setLastRenderedMessage] = __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_$40$babel$2b$core$40$7$2e$29$2e$7_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"](null);
+    const [lastRenderedMessageKey, setLastRenderedMessageKey] = __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_$40$babel$2b$core$40$7$2e$29$2e$7_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"](null);
+    const clientErrorMessage = validityData.errors.length > 1 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_$40$babel$2b$core$40$7$2e$29$2e$7_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsx"])("ul", {
+        children: validityData.errors.map((message)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_$40$babel$2b$core$40$7$2e$29$2e$7_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsx"])("li", {
+                children: message
+            }, message))
+    }) : validityData.error;
+    const errorMessage = hasSpecificMatch ? clientErrorMessage : formError || clientErrorMessage;
+    let errorKey = validityData.error;
+    if (formError != null) {
+        errorKey = Array.isArray(formError) ? JSON.stringify(formError) : formError;
+    } else if (validityData.errors.length > 1) {
+        errorKey = JSON.stringify(validityData.errors);
+    }
+    if (rendered && errorKey !== lastRenderedMessageKey) {
+        setLastRenderedMessageKey(errorKey);
+        setLastRenderedMessage(errorMessage);
+    }
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$react$40$1$2e$5$2e$0_$40$date$2d$fns$2b$tz$40$1$2e$4$2e$1_$40$types$2b$react$40$19$2e$2$2e$14_date$2d$fns$40$4$2e$1$2e$0_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$react$2f$esm$2f$internals$2f$useOpenChangeComplete$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useOpenChangeComplete"])({
+        open: rendered,
+        ref: errorRef,
+        onComplete () {
+            if (!rendered) {
+                setMounted(false);
+            }
+        }
+    });
+    const state = {
+        ...fieldState,
+        transitionStatus
+    };
+    const element = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$react$40$1$2e$5$2e$0_$40$date$2d$fns$2b$tz$40$1$2e$4$2e$1_$40$types$2b$react$40$19$2e$2$2e$14_date$2d$fns$40$4$2e$1$2e$0_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$react$2f$esm$2f$internals$2f$useRenderElement$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useRenderElement"])('div', componentProps, {
+        ref: [
+            forwardedRef,
+            errorRef
+        ],
+        state,
+        props: [
+            {
+                id,
+                children: rendered ? errorMessage : lastRenderedMessage
+            },
+            elementProps
+        ],
+        stateAttributesMapping,
+        enabled: mounted
+    });
+    if (!mounted) {
+        return null;
+    }
+    return element;
+});
+if ("TURBOPACK compile-time truthy", 1) FieldError.displayName = "FieldError";
+}),
+"[project]/Desktop/LicenseAudit/frontend/node_modules/.pnpm/@base-ui+react@1.5.0_@date-fns+tz@1.4.1_@types+react@19.2.14_date-fns@4.1.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/@base-ui/react/esm/field/description/FieldDescription.js [app-ssr] (ecmascript)", ((__turbopack_context__) => {
+"use strict";
+
+__turbopack_context__.s([
+    "FieldDescription",
+    ()=>FieldDescription
+]);
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_$40$babel$2b$core$40$7$2e$29$2e$7_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/LicenseAudit/frontend/node_modules/.pnpm/next@16.2.6_@babel+core@7.29.7_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$utils$40$0$2e$2$2e$9_$40$types$2b$react$40$19$2e$2$2e$14_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$utils$2f$esm$2f$useIsoLayoutEffect$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/LicenseAudit/frontend/node_modules/.pnpm/@base-ui+utils@0.2.9_@types+react@19.2.14_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/@base-ui/utils/esm/useIsoLayoutEffect.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$react$40$1$2e$5$2e$0_$40$date$2d$fns$2b$tz$40$1$2e$4$2e$1_$40$types$2b$react$40$19$2e$2$2e$14_date$2d$fns$40$4$2e$1$2e$0_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$react$2f$esm$2f$internals$2f$field$2d$root$2d$context$2f$FieldRootContext$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/LicenseAudit/frontend/node_modules/.pnpm/@base-ui+react@1.5.0_@date-fns+tz@1.4.1_@types+react@19.2.14_date-fns@4.1.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/@base-ui/react/esm/internals/field-root-context/FieldRootContext.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$react$40$1$2e$5$2e$0_$40$date$2d$fns$2b$tz$40$1$2e$4$2e$1_$40$types$2b$react$40$19$2e$2$2e$14_date$2d$fns$40$4$2e$1$2e$0_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$react$2f$esm$2f$internals$2f$labelable$2d$provider$2f$LabelableContext$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/LicenseAudit/frontend/node_modules/.pnpm/@base-ui+react@1.5.0_@date-fns+tz@1.4.1_@types+react@19.2.14_date-fns@4.1.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/@base-ui/react/esm/internals/labelable-provider/LabelableContext.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$react$40$1$2e$5$2e$0_$40$date$2d$fns$2b$tz$40$1$2e$4$2e$1_$40$types$2b$react$40$19$2e$2$2e$14_date$2d$fns$40$4$2e$1$2e$0_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$react$2f$esm$2f$internals$2f$field$2d$constants$2f$constants$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/LicenseAudit/frontend/node_modules/.pnpm/@base-ui+react@1.5.0_@date-fns+tz@1.4.1_@types+react@19.2.14_date-fns@4.1.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/@base-ui/react/esm/internals/field-constants/constants.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$react$40$1$2e$5$2e$0_$40$date$2d$fns$2b$tz$40$1$2e$4$2e$1_$40$types$2b$react$40$19$2e$2$2e$14_date$2d$fns$40$4$2e$1$2e$0_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$react$2f$esm$2f$internals$2f$useBaseUiId$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/LicenseAudit/frontend/node_modules/.pnpm/@base-ui+react@1.5.0_@date-fns+tz@1.4.1_@types+react@19.2.14_date-fns@4.1.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/@base-ui/react/esm/internals/useBaseUiId.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$react$40$1$2e$5$2e$0_$40$date$2d$fns$2b$tz$40$1$2e$4$2e$1_$40$types$2b$react$40$19$2e$2$2e$14_date$2d$fns$40$4$2e$1$2e$0_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$react$2f$esm$2f$internals$2f$useRenderElement$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/LicenseAudit/frontend/node_modules/.pnpm/@base-ui+react@1.5.0_@date-fns+tz@1.4.1_@types+react@19.2.14_date-fns@4.1.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/@base-ui/react/esm/internals/useRenderElement.js [app-ssr] (ecmascript)");
+'use client';
+;
+;
+;
+;
+;
+;
+;
+const FieldDescription = /*#__PURE__*/ __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_$40$babel$2b$core$40$7$2e$29$2e$7_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["forwardRef"](function FieldDescription(componentProps, forwardedRef) {
+    const { render, id: idProp, className, style, ...elementProps } = componentProps;
+    const id = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$react$40$1$2e$5$2e$0_$40$date$2d$fns$2b$tz$40$1$2e$4$2e$1_$40$types$2b$react$40$19$2e$2$2e$14_date$2d$fns$40$4$2e$1$2e$0_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$react$2f$esm$2f$internals$2f$useBaseUiId$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useBaseUiId"])(idProp);
+    const fieldRootContext = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$react$40$1$2e$5$2e$0_$40$date$2d$fns$2b$tz$40$1$2e$4$2e$1_$40$types$2b$react$40$19$2e$2$2e$14_date$2d$fns$40$4$2e$1$2e$0_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$react$2f$esm$2f$internals$2f$field$2d$root$2d$context$2f$FieldRootContext$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useFieldRootContext"])(false);
+    const { setMessageIds } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$react$40$1$2e$5$2e$0_$40$date$2d$fns$2b$tz$40$1$2e$4$2e$1_$40$types$2b$react$40$19$2e$2$2e$14_date$2d$fns$40$4$2e$1$2e$0_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$react$2f$esm$2f$internals$2f$labelable$2d$provider$2f$LabelableContext$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useLabelableContext"])();
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$utils$40$0$2e$2$2e$9_$40$types$2b$react$40$19$2e$2$2e$14_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$utils$2f$esm$2f$useIsoLayoutEffect$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useIsoLayoutEffect"])(()=>{
+        if (!id) {
+            return undefined;
+        }
+        setMessageIds((v)=>v.concat(id));
+        return ()=>{
+            setMessageIds((v)=>v.filter((item)=>item !== id));
+        };
+    }, [
+        id,
+        setMessageIds
+    ]);
+    const element = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$react$40$1$2e$5$2e$0_$40$date$2d$fns$2b$tz$40$1$2e$4$2e$1_$40$types$2b$react$40$19$2e$2$2e$14_date$2d$fns$40$4$2e$1$2e$0_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$react$2f$esm$2f$internals$2f$useRenderElement$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useRenderElement"])('p', componentProps, {
+        ref: forwardedRef,
+        state: fieldRootContext.state,
+        props: [
+            {
+                id
+            },
+            elementProps
+        ],
+        stateAttributesMapping: __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$react$40$1$2e$5$2e$0_$40$date$2d$fns$2b$tz$40$1$2e$4$2e$1_$40$types$2b$react$40$19$2e$2$2e$14_date$2d$fns$40$4$2e$1$2e$0_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$react$2f$esm$2f$internals$2f$field$2d$constants$2f$constants$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["fieldValidityMapping"]
+    });
+    return element;
+});
+if ("TURBOPACK compile-time truthy", 1) FieldDescription.displayName = "FieldDescription";
+}),
+"[project]/Desktop/LicenseAudit/frontend/node_modules/.pnpm/@base-ui+react@1.5.0_@date-fns+tz@1.4.1_@types+react@19.2.14_date-fns@4.1.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/@base-ui/react/esm/field/control/FieldControl.js [app-ssr] (ecmascript)", ((__turbopack_context__) => {
+"use strict";
+
+__turbopack_context__.s([
+    "FieldControl",
+    ()=>FieldControl
+]);
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_$40$babel$2b$core$40$7$2e$29$2e$7_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/LicenseAudit/frontend/node_modules/.pnpm/next@16.2.6_@babel+core@7.29.7_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$utils$40$0$2e$2$2e$9_$40$types$2b$react$40$19$2e$2$2e$14_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$utils$2f$esm$2f$useControlled$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/LicenseAudit/frontend/node_modules/.pnpm/@base-ui+utils@0.2.9_@types+react@19.2.14_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/@base-ui/utils/esm/useControlled.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$utils$40$0$2e$2$2e$9_$40$types$2b$react$40$19$2e$2$2e$14_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$utils$2f$esm$2f$useIsoLayoutEffect$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/LicenseAudit/frontend/node_modules/.pnpm/@base-ui+utils@0.2.9_@types+react@19.2.14_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/@base-ui/utils/esm/useIsoLayoutEffect.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$utils$40$0$2e$2$2e$9_$40$types$2b$react$40$19$2e$2$2e$14_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$utils$2f$esm$2f$owner$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$locals$3e$__ = __turbopack_context__.i("[project]/Desktop/LicenseAudit/frontend/node_modules/.pnpm/@base-ui+utils@0.2.9_@types+react@19.2.14_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/@base-ui/utils/esm/owner.js [app-ssr] (ecmascript) <locals>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$utils$40$0$2e$2$2e$9_$40$types$2b$react$40$19$2e$2$2e$14_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$utils$2f$esm$2f$useStableCallback$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/LicenseAudit/frontend/node_modules/.pnpm/@base-ui+utils@0.2.9_@types+react@19.2.14_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/@base-ui/utils/esm/useStableCallback.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$react$40$1$2e$5$2e$0_$40$date$2d$fns$2b$tz$40$1$2e$4$2e$1_$40$types$2b$react$40$19$2e$2$2e$14_date$2d$fns$40$4$2e$1$2e$0_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$react$2f$esm$2f$internals$2f$field$2d$root$2d$context$2f$FieldRootContext$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/LicenseAudit/frontend/node_modules/.pnpm/@base-ui+react@1.5.0_@date-fns+tz@1.4.1_@types+react@19.2.14_date-fns@4.1.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/@base-ui/react/esm/internals/field-root-context/FieldRootContext.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$react$40$1$2e$5$2e$0_$40$date$2d$fns$2b$tz$40$1$2e$4$2e$1_$40$types$2b$react$40$19$2e$2$2e$14_date$2d$fns$40$4$2e$1$2e$0_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$react$2f$esm$2f$internals$2f$field$2d$register$2d$control$2f$useRegisterFieldControl$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/LicenseAudit/frontend/node_modules/.pnpm/@base-ui+react@1.5.0_@date-fns+tz@1.4.1_@types+react@19.2.14_date-fns@4.1.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/@base-ui/react/esm/internals/field-register-control/useRegisterFieldControl.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$react$40$1$2e$5$2e$0_$40$date$2d$fns$2b$tz$40$1$2e$4$2e$1_$40$types$2b$react$40$19$2e$2$2e$14_date$2d$fns$40$4$2e$1$2e$0_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$react$2f$esm$2f$internals$2f$labelable$2d$provider$2f$LabelableContext$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/LicenseAudit/frontend/node_modules/.pnpm/@base-ui+react@1.5.0_@date-fns+tz@1.4.1_@types+react@19.2.14_date-fns@4.1.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/@base-ui/react/esm/internals/labelable-provider/LabelableContext.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$react$40$1$2e$5$2e$0_$40$date$2d$fns$2b$tz$40$1$2e$4$2e$1_$40$types$2b$react$40$19$2e$2$2e$14_date$2d$fns$40$4$2e$1$2e$0_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$react$2f$esm$2f$internals$2f$labelable$2d$provider$2f$useLabelableId$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/LicenseAudit/frontend/node_modules/.pnpm/@base-ui+react@1.5.0_@date-fns+tz@1.4.1_@types+react@19.2.14_date-fns@4.1.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/@base-ui/react/esm/internals/labelable-provider/useLabelableId.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$react$40$1$2e$5$2e$0_$40$date$2d$fns$2b$tz$40$1$2e$4$2e$1_$40$types$2b$react$40$19$2e$2$2e$14_date$2d$fns$40$4$2e$1$2e$0_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$react$2f$esm$2f$internals$2f$field$2d$constants$2f$constants$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/LicenseAudit/frontend/node_modules/.pnpm/@base-ui+react@1.5.0_@date-fns+tz@1.4.1_@types+react@19.2.14_date-fns@4.1.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/@base-ui/react/esm/internals/field-constants/constants.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$react$40$1$2e$5$2e$0_$40$date$2d$fns$2b$tz$40$1$2e$4$2e$1_$40$types$2b$react$40$19$2e$2$2e$14_date$2d$fns$40$4$2e$1$2e$0_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$react$2f$esm$2f$internals$2f$useRenderElement$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/LicenseAudit/frontend/node_modules/.pnpm/@base-ui+react@1.5.0_@date-fns+tz@1.4.1_@types+react@19.2.14_date-fns@4.1.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/@base-ui/react/esm/internals/useRenderElement.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$react$40$1$2e$5$2e$0_$40$date$2d$fns$2b$tz$40$1$2e$4$2e$1_$40$types$2b$react$40$19$2e$2$2e$14_date$2d$fns$40$4$2e$1$2e$0_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$react$2f$esm$2f$internals$2f$createBaseUIEventDetails$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/LicenseAudit/frontend/node_modules/.pnpm/@base-ui+react@1.5.0_@date-fns+tz@1.4.1_@types+react@19.2.14_date-fns@4.1.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/@base-ui/react/esm/internals/createBaseUIEventDetails.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$react$40$1$2e$5$2e$0_$40$date$2d$fns$2b$tz$40$1$2e$4$2e$1_$40$types$2b$react$40$19$2e$2$2e$14_date$2d$fns$40$4$2e$1$2e$0_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$react$2f$esm$2f$internals$2f$reason$2d$parts$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__$2a$__as__REASONS$3e$__ = __turbopack_context__.i("[project]/Desktop/LicenseAudit/frontend/node_modules/.pnpm/@base-ui+react@1.5.0_@date-fns+tz@1.4.1_@types+react@19.2.14_date-fns@4.1.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/@base-ui/react/esm/internals/reason-parts.js [app-ssr] (ecmascript) <export * as REASONS>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$react$40$1$2e$5$2e$0_$40$date$2d$fns$2b$tz$40$1$2e$4$2e$1_$40$types$2b$react$40$19$2e$2$2e$14_date$2d$fns$40$4$2e$1$2e$0_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$react$2f$esm$2f$internals$2f$shadowDom$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/LicenseAudit/frontend/node_modules/.pnpm/@base-ui+react@1.5.0_@date-fns+tz@1.4.1_@types+react@19.2.14_date-fns@4.1.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/@base-ui/react/esm/internals/shadowDom.js [app-ssr] (ecmascript)");
+'use client';
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+;
+const FieldControl = /*#__PURE__*/ __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_$40$babel$2b$core$40$7$2e$29$2e$7_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["forwardRef"](function FieldControl(componentProps, forwardedRef) {
+    const { render, className, id: idProp, name: nameProp, value: valueProp, disabled: disabledProp = false, onValueChange, defaultValue, autoFocus = false, style, ...elementProps } = componentProps;
+    const { state: fieldState, name: fieldName, disabled: fieldDisabled, setTouched, setDirty, validityData, setFocused, setFilled, validationMode, validation } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$react$40$1$2e$5$2e$0_$40$date$2d$fns$2b$tz$40$1$2e$4$2e$1_$40$types$2b$react$40$19$2e$2$2e$14_date$2d$fns$40$4$2e$1$2e$0_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$react$2f$esm$2f$internals$2f$field$2d$root$2d$context$2f$FieldRootContext$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useFieldRootContext"])();
+    const disabled = fieldDisabled || disabledProp;
+    const name = fieldName ?? nameProp;
+    const state = {
+        ...fieldState,
+        disabled
+    };
+    const { labelId } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$react$40$1$2e$5$2e$0_$40$date$2d$fns$2b$tz$40$1$2e$4$2e$1_$40$types$2b$react$40$19$2e$2$2e$14_date$2d$fns$40$4$2e$1$2e$0_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$react$2f$esm$2f$internals$2f$labelable$2d$provider$2f$LabelableContext$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useLabelableContext"])();
+    const id = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$react$40$1$2e$5$2e$0_$40$date$2d$fns$2b$tz$40$1$2e$4$2e$1_$40$types$2b$react$40$19$2e$2$2e$14_date$2d$fns$40$4$2e$1$2e$0_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$react$2f$esm$2f$internals$2f$labelable$2d$provider$2f$useLabelableId$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useLabelableId"])({
+        id: idProp
+    });
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$utils$40$0$2e$2$2e$9_$40$types$2b$react$40$19$2e$2$2e$14_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$utils$2f$esm$2f$useIsoLayoutEffect$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useIsoLayoutEffect"])(()=>{
+        const hasExternalValue = valueProp != null;
+        if (validation.inputRef.current?.value || hasExternalValue && valueProp !== '') {
+            setFilled(true);
+        } else if (hasExternalValue && valueProp === '') {
+            setFilled(false);
+        }
+    }, [
+        validation.inputRef,
+        setFilled,
+        valueProp
+    ]);
+    const inputRef = __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_$40$babel$2b$core$40$7$2e$29$2e$7_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useRef"](null);
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$utils$40$0$2e$2$2e$9_$40$types$2b$react$40$19$2e$2$2e$14_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$utils$2f$esm$2f$useIsoLayoutEffect$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useIsoLayoutEffect"])(()=>{
+        if (autoFocus && inputRef.current === (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$react$40$1$2e$5$2e$0_$40$date$2d$fns$2b$tz$40$1$2e$4$2e$1_$40$types$2b$react$40$19$2e$2$2e$14_date$2d$fns$40$4$2e$1$2e$0_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$react$2f$esm$2f$internals$2f$shadowDom$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["activeElement"])((0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$utils$40$0$2e$2$2e$9_$40$types$2b$react$40$19$2e$2$2e$14_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$utils$2f$esm$2f$owner$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$locals$3e$__["ownerDocument"])(inputRef.current))) {
+            setFocused(true);
+        }
+    }, [
+        autoFocus,
+        setFocused
+    ]);
+    const [valueUnwrapped] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$utils$40$0$2e$2$2e$9_$40$types$2b$react$40$19$2e$2$2e$14_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$utils$2f$esm$2f$useControlled$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useControlled"])({
+        controlled: valueProp,
+        default: defaultValue,
+        name: 'FieldControl',
+        state: 'value'
+    });
+    const isControlled = valueProp !== undefined;
+    const value = isControlled ? valueUnwrapped : undefined;
+    const getValueFromInput = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$utils$40$0$2e$2$2e$9_$40$types$2b$react$40$19$2e$2$2e$14_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$utils$2f$esm$2f$useStableCallback$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useStableCallback"])(()=>validation.inputRef.current?.value);
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$react$40$1$2e$5$2e$0_$40$date$2d$fns$2b$tz$40$1$2e$4$2e$1_$40$types$2b$react$40$19$2e$2$2e$14_date$2d$fns$40$4$2e$1$2e$0_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$react$2f$esm$2f$internals$2f$field$2d$register$2d$control$2f$useRegisterFieldControl$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useRegisterFieldControl"])(validation.inputRef, id, value, getValueFromInput);
+    const element = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$react$40$1$2e$5$2e$0_$40$date$2d$fns$2b$tz$40$1$2e$4$2e$1_$40$types$2b$react$40$19$2e$2$2e$14_date$2d$fns$40$4$2e$1$2e$0_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$react$2f$esm$2f$internals$2f$useRenderElement$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useRenderElement"])('input', componentProps, {
+        ref: [
+            forwardedRef,
+            inputRef
+        ],
+        state,
+        props: [
+            {
+                id,
+                disabled,
+                name,
+                ref: validation.inputRef,
+                'aria-labelledby': labelId,
+                autoFocus,
+                ...isControlled ? {
+                    value
+                } : {
+                    defaultValue
+                },
+                onChange (event) {
+                    const inputValue = event.currentTarget.value;
+                    onValueChange?.(inputValue, (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$react$40$1$2e$5$2e$0_$40$date$2d$fns$2b$tz$40$1$2e$4$2e$1_$40$types$2b$react$40$19$2e$2$2e$14_date$2d$fns$40$4$2e$1$2e$0_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$react$2f$esm$2f$internals$2f$createBaseUIEventDetails$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["createChangeEventDetails"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$react$40$1$2e$5$2e$0_$40$date$2d$fns$2b$tz$40$1$2e$4$2e$1_$40$types$2b$react$40$19$2e$2$2e$14_date$2d$fns$40$4$2e$1$2e$0_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$react$2f$esm$2f$internals$2f$reason$2d$parts$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__$2a$__as__REASONS$3e$__["REASONS"].none, event.nativeEvent));
+                    setDirty(inputValue !== validityData.initialValue);
+                    setFilled(inputValue !== '');
+                },
+                onFocus () {
+                    setFocused(true);
+                },
+                onBlur (event) {
+                    setTouched(true);
+                    setFocused(false);
+                    if (validationMode === 'onBlur') {
+                        validation.commit(event.currentTarget.value);
+                    }
+                },
+                onKeyDown (event) {
+                    if (event.currentTarget.tagName === 'INPUT' && event.key === 'Enter') {
+                        setTouched(true);
+                        validation.commit(event.currentTarget.value);
+                    }
+                }
+            },
+            validation.getInputValidationProps(),
+            elementProps
+        ],
+        stateAttributesMapping: __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$react$40$1$2e$5$2e$0_$40$date$2d$fns$2b$tz$40$1$2e$4$2e$1_$40$types$2b$react$40$19$2e$2$2e$14_date$2d$fns$40$4$2e$1$2e$0_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$react$2f$esm$2f$internals$2f$field$2d$constants$2f$constants$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["fieldValidityMapping"]
+    });
+    return element;
+});
+if ("TURBOPACK compile-time truthy", 1) FieldControl.displayName = "FieldControl";
+}),
+"[project]/Desktop/LicenseAudit/frontend/node_modules/.pnpm/@base-ui+react@1.5.0_@date-fns+tz@1.4.1_@types+react@19.2.14_date-fns@4.1.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/@base-ui/react/esm/field/validity/FieldValidity.js [app-ssr] (ecmascript)", ((__turbopack_context__) => {
+"use strict";
+
+__turbopack_context__.s([
+    "FieldValidity",
+    ()=>FieldValidity
+]);
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_$40$babel$2b$core$40$7$2e$29$2e$7_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/LicenseAudit/frontend/node_modules/.pnpm/next@16.2.6_@babel+core@7.29.7_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$react$40$1$2e$5$2e$0_$40$date$2d$fns$2b$tz$40$1$2e$4$2e$1_$40$types$2b$react$40$19$2e$2$2e$14_date$2d$fns$40$4$2e$1$2e$0_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$react$2f$esm$2f$internals$2f$field$2d$root$2d$context$2f$FieldRootContext$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/LicenseAudit/frontend/node_modules/.pnpm/@base-ui+react@1.5.0_@date-fns+tz@1.4.1_@types+react@19.2.14_date-fns@4.1.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/@base-ui/react/esm/internals/field-root-context/FieldRootContext.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$react$40$1$2e$5$2e$0_$40$date$2d$fns$2b$tz$40$1$2e$4$2e$1_$40$types$2b$react$40$19$2e$2$2e$14_date$2d$fns$40$4$2e$1$2e$0_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$react$2f$esm$2f$field$2f$utils$2f$getCombinedFieldValidityData$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/LicenseAudit/frontend/node_modules/.pnpm/@base-ui+react@1.5.0_@date-fns+tz@1.4.1_@types+react@19.2.14_date-fns@4.1.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/@base-ui/react/esm/field/utils/getCombinedFieldValidityData.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$react$40$1$2e$5$2e$0_$40$date$2d$fns$2b$tz$40$1$2e$4$2e$1_$40$types$2b$react$40$19$2e$2$2e$14_date$2d$fns$40$4$2e$1$2e$0_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$react$2f$esm$2f$internals$2f$useTransitionStatus$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/LicenseAudit/frontend/node_modules/.pnpm/@base-ui+react@1.5.0_@date-fns+tz@1.4.1_@types+react@19.2.14_date-fns@4.1.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/@base-ui/react/esm/internals/useTransitionStatus.js [app-ssr] (ecmascript)");
+/**
+ * Used to display a custom message based on the field's validity.
+ * Requires `children` to be a function that accepts field validity state as an argument.
+ *
+ * Documentation: [Base UI Field](https://base-ui.com/react/components/field)
+ */ var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_$40$babel$2b$core$40$7$2e$29$2e$7_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/LicenseAudit/frontend/node_modules/.pnpm/next@16.2.6_@babel+core@7.29.7_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react-jsx-runtime.js [app-ssr] (ecmascript)");
+'use client';
+;
+;
+;
+;
+;
+const FieldValidity = function FieldValidity(props) {
+    const { children } = props;
+    const { validityData, invalid } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$react$40$1$2e$5$2e$0_$40$date$2d$fns$2b$tz$40$1$2e$4$2e$1_$40$types$2b$react$40$19$2e$2$2e$14_date$2d$fns$40$4$2e$1$2e$0_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$react$2f$esm$2f$internals$2f$field$2d$root$2d$context$2f$FieldRootContext$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useFieldRootContext"])(false);
+    const combinedFieldValidityData = __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_$40$babel$2b$core$40$7$2e$29$2e$7_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useMemo"](()=>(0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$react$40$1$2e$5$2e$0_$40$date$2d$fns$2b$tz$40$1$2e$4$2e$1_$40$types$2b$react$40$19$2e$2$2e$14_date$2d$fns$40$4$2e$1$2e$0_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$react$2f$esm$2f$field$2f$utils$2f$getCombinedFieldValidityData$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["getCombinedFieldValidityData"])(validityData, invalid), [
+        validityData,
+        invalid
+    ]);
+    const isInvalid = combinedFieldValidityData.state.valid === false;
+    const { transitionStatus } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$react$40$1$2e$5$2e$0_$40$date$2d$fns$2b$tz$40$1$2e$4$2e$1_$40$types$2b$react$40$19$2e$2$2e$14_date$2d$fns$40$4$2e$1$2e$0_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$react$2f$esm$2f$internals$2f$useTransitionStatus$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useTransitionStatus"])(isInvalid);
+    const fieldValidityState = __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_$40$babel$2b$core$40$7$2e$29$2e$7_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useMemo"](()=>{
+        return {
+            ...combinedFieldValidityData,
+            validity: combinedFieldValidityData.state,
+            transitionStatus
+        };
+    }, [
+        combinedFieldValidityData,
+        transitionStatus
+    ]);
+    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_$40$babel$2b$core$40$7$2e$29$2e$7_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsx"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_$40$babel$2b$core$40$7$2e$29$2e$7_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Fragment"], {
+        children: children(fieldValidityState)
+    });
+};
+if ("TURBOPACK compile-time truthy", 1) FieldValidity.displayName = "FieldValidity";
+}),
+"[project]/Desktop/LicenseAudit/frontend/node_modules/.pnpm/@base-ui+react@1.5.0_@date-fns+tz@1.4.1_@types+react@19.2.14_date-fns@4.1.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/@base-ui/react/esm/field/item/FieldItemContext.js [app-ssr] (ecmascript)", ((__turbopack_context__) => {
+"use strict";
+
+__turbopack_context__.s([
+    "FieldItemContext",
+    ()=>FieldItemContext,
+    "useFieldItemContext",
+    ()=>useFieldItemContext
+]);
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_$40$babel$2b$core$40$7$2e$29$2e$7_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/LicenseAudit/frontend/node_modules/.pnpm/next@16.2.6_@babel+core@7.29.7_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react.js [app-ssr] (ecmascript)");
+'use client';
+;
+const FieldItemContext = /*#__PURE__*/ __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_$40$babel$2b$core$40$7$2e$29$2e$7_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["createContext"]({
+    disabled: false
+});
+if ("TURBOPACK compile-time truthy", 1) FieldItemContext.displayName = "FieldItemContext";
+function useFieldItemContext() {
+    const context = __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_$40$babel$2b$core$40$7$2e$29$2e$7_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useContext"](FieldItemContext);
+    return context;
+}
+}),
+"[project]/Desktop/LicenseAudit/frontend/node_modules/.pnpm/@base-ui+react@1.5.0_@date-fns+tz@1.4.1_@types+react@19.2.14_date-fns@4.1.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/@base-ui/react/esm/field/item/FieldItem.js [app-ssr] (ecmascript)", ((__turbopack_context__) => {
+"use strict";
+
+__turbopack_context__.s([
+    "FieldItem",
+    ()=>FieldItem
+]);
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_$40$babel$2b$core$40$7$2e$29$2e$7_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/LicenseAudit/frontend/node_modules/.pnpm/next@16.2.6_@babel+core@7.29.7_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$react$40$1$2e$5$2e$0_$40$date$2d$fns$2b$tz$40$1$2e$4$2e$1_$40$types$2b$react$40$19$2e$2$2e$14_date$2d$fns$40$4$2e$1$2e$0_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$react$2f$esm$2f$internals$2f$field$2d$root$2d$context$2f$FieldRootContext$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/LicenseAudit/frontend/node_modules/.pnpm/@base-ui+react@1.5.0_@date-fns+tz@1.4.1_@types+react@19.2.14_date-fns@4.1.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/@base-ui/react/esm/internals/field-root-context/FieldRootContext.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$react$40$1$2e$5$2e$0_$40$date$2d$fns$2b$tz$40$1$2e$4$2e$1_$40$types$2b$react$40$19$2e$2$2e$14_date$2d$fns$40$4$2e$1$2e$0_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$react$2f$esm$2f$internals$2f$field$2d$constants$2f$constants$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/LicenseAudit/frontend/node_modules/.pnpm/@base-ui+react@1.5.0_@date-fns+tz@1.4.1_@types+react@19.2.14_date-fns@4.1.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/@base-ui/react/esm/internals/field-constants/constants.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$react$40$1$2e$5$2e$0_$40$date$2d$fns$2b$tz$40$1$2e$4$2e$1_$40$types$2b$react$40$19$2e$2$2e$14_date$2d$fns$40$4$2e$1$2e$0_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$react$2f$esm$2f$internals$2f$useRenderElement$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/LicenseAudit/frontend/node_modules/.pnpm/@base-ui+react@1.5.0_@date-fns+tz@1.4.1_@types+react@19.2.14_date-fns@4.1.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/@base-ui/react/esm/internals/useRenderElement.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$react$40$1$2e$5$2e$0_$40$date$2d$fns$2b$tz$40$1$2e$4$2e$1_$40$types$2b$react$40$19$2e$2$2e$14_date$2d$fns$40$4$2e$1$2e$0_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$react$2f$esm$2f$field$2f$item$2f$FieldItemContext$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/LicenseAudit/frontend/node_modules/.pnpm/@base-ui+react@1.5.0_@date-fns+tz@1.4.1_@types+react@19.2.14_date-fns@4.1.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/@base-ui/react/esm/field/item/FieldItemContext.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$react$40$1$2e$5$2e$0_$40$date$2d$fns$2b$tz$40$1$2e$4$2e$1_$40$types$2b$react$40$19$2e$2$2e$14_date$2d$fns$40$4$2e$1$2e$0_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$react$2f$esm$2f$internals$2f$labelable$2d$provider$2f$LabelableProvider$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/LicenseAudit/frontend/node_modules/.pnpm/@base-ui+react@1.5.0_@date-fns+tz@1.4.1_@types+react@19.2.14_date-fns@4.1.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/@base-ui/react/esm/internals/labelable-provider/LabelableProvider.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$react$40$1$2e$5$2e$0_$40$date$2d$fns$2b$tz$40$1$2e$4$2e$1_$40$types$2b$react$40$19$2e$2$2e$14_date$2d$fns$40$4$2e$1$2e$0_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$react$2f$esm$2f$checkbox$2d$group$2f$CheckboxGroupContext$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/LicenseAudit/frontend/node_modules/.pnpm/@base-ui+react@1.5.0_@date-fns+tz@1.4.1_@types+react@19.2.14_date-fns@4.1.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/@base-ui/react/esm/checkbox-group/CheckboxGroupContext.js [app-ssr] (ecmascript)");
+/**
+ * Groups individual items in a checkbox group or radio group with a label and description.
+ * Renders a `<div>` element.
+ *
+ * Documentation: [Base UI Field](https://base-ui.com/react/components/field)
+ */ var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_$40$babel$2b$core$40$7$2e$29$2e$7_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/LicenseAudit/frontend/node_modules/.pnpm/next@16.2.6_@babel+core@7.29.7_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react-jsx-runtime.js [app-ssr] (ecmascript)");
+'use client';
+;
+;
+;
+;
+;
+;
+;
+;
+const FieldItem = /*#__PURE__*/ __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_$40$babel$2b$core$40$7$2e$29$2e$7_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["forwardRef"](function FieldItem(componentProps, forwardedRef) {
+    const { render, className, style, disabled: disabledProp = false, ...elementProps } = componentProps;
+    const { state, disabled: rootDisabled } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$react$40$1$2e$5$2e$0_$40$date$2d$fns$2b$tz$40$1$2e$4$2e$1_$40$types$2b$react$40$19$2e$2$2e$14_date$2d$fns$40$4$2e$1$2e$0_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$react$2f$esm$2f$internals$2f$field$2d$root$2d$context$2f$FieldRootContext$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useFieldRootContext"])(false);
+    const disabled = rootDisabled || disabledProp;
+    const checkboxGroupContext = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$react$40$1$2e$5$2e$0_$40$date$2d$fns$2b$tz$40$1$2e$4$2e$1_$40$types$2b$react$40$19$2e$2$2e$14_date$2d$fns$40$4$2e$1$2e$0_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$react$2f$esm$2f$checkbox$2d$group$2f$CheckboxGroupContext$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useCheckboxGroupContext"])();
+    const hasParentCheckbox = checkboxGroupContext?.allValues !== undefined;
+    const controlId = hasParentCheckbox ? checkboxGroupContext?.parent.id : undefined;
+    const fieldItemContext = __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_$40$babel$2b$core$40$7$2e$29$2e$7_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useMemo"](()=>({
+            disabled
+        }), [
+        disabled
+    ]);
+    const element = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$react$40$1$2e$5$2e$0_$40$date$2d$fns$2b$tz$40$1$2e$4$2e$1_$40$types$2b$react$40$19$2e$2$2e$14_date$2d$fns$40$4$2e$1$2e$0_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$react$2f$esm$2f$internals$2f$useRenderElement$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useRenderElement"])('div', componentProps, {
+        ref: forwardedRef,
+        state,
+        props: elementProps,
+        stateAttributesMapping: __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$react$40$1$2e$5$2e$0_$40$date$2d$fns$2b$tz$40$1$2e$4$2e$1_$40$types$2b$react$40$19$2e$2$2e$14_date$2d$fns$40$4$2e$1$2e$0_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$react$2f$esm$2f$internals$2f$field$2d$constants$2f$constants$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["fieldValidityMapping"]
+    });
+    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_$40$babel$2b$core$40$7$2e$29$2e$7_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsx"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$react$40$1$2e$5$2e$0_$40$date$2d$fns$2b$tz$40$1$2e$4$2e$1_$40$types$2b$react$40$19$2e$2$2e$14_date$2d$fns$40$4$2e$1$2e$0_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$react$2f$esm$2f$internals$2f$labelable$2d$provider$2f$LabelableProvider$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["LabelableProvider"], {
+        controlId: controlId,
+        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$2$2e$6_$40$babel$2b$core$40$7$2e$29$2e$7_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsx"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$react$40$1$2e$5$2e$0_$40$date$2d$fns$2b$tz$40$1$2e$4$2e$1_$40$types$2b$react$40$19$2e$2$2e$14_date$2d$fns$40$4$2e$1$2e$0_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$react$2f$esm$2f$field$2f$item$2f$FieldItemContext$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["FieldItemContext"].Provider, {
+            value: fieldItemContext,
+            children: element
+        })
+    });
+});
+if ("TURBOPACK compile-time truthy", 1) FieldItem.displayName = "FieldItem";
+}),
+"[project]/Desktop/LicenseAudit/frontend/node_modules/.pnpm/@base-ui+react@1.5.0_@date-fns+tz@1.4.1_@types+react@19.2.14_date-fns@4.1.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/@base-ui/react/esm/field/index.parts.js [app-ssr] (ecmascript)", ((__turbopack_context__) => {
+"use strict";
+
+__turbopack_context__.s([
+    "Control",
+    ()=>__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$react$40$1$2e$5$2e$0_$40$date$2d$fns$2b$tz$40$1$2e$4$2e$1_$40$types$2b$react$40$19$2e$2$2e$14_date$2d$fns$40$4$2e$1$2e$0_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$react$2f$esm$2f$field$2f$control$2f$FieldControl$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["FieldControl"],
+    "Description",
+    ()=>__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$react$40$1$2e$5$2e$0_$40$date$2d$fns$2b$tz$40$1$2e$4$2e$1_$40$types$2b$react$40$19$2e$2$2e$14_date$2d$fns$40$4$2e$1$2e$0_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$react$2f$esm$2f$field$2f$description$2f$FieldDescription$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["FieldDescription"],
+    "Error",
+    ()=>__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$react$40$1$2e$5$2e$0_$40$date$2d$fns$2b$tz$40$1$2e$4$2e$1_$40$types$2b$react$40$19$2e$2$2e$14_date$2d$fns$40$4$2e$1$2e$0_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$react$2f$esm$2f$field$2f$error$2f$FieldError$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["FieldError"],
+    "Item",
+    ()=>__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$react$40$1$2e$5$2e$0_$40$date$2d$fns$2b$tz$40$1$2e$4$2e$1_$40$types$2b$react$40$19$2e$2$2e$14_date$2d$fns$40$4$2e$1$2e$0_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$react$2f$esm$2f$field$2f$item$2f$FieldItem$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["FieldItem"],
+    "Label",
+    ()=>__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$react$40$1$2e$5$2e$0_$40$date$2d$fns$2b$tz$40$1$2e$4$2e$1_$40$types$2b$react$40$19$2e$2$2e$14_date$2d$fns$40$4$2e$1$2e$0_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$react$2f$esm$2f$field$2f$label$2f$FieldLabel$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["FieldLabel"],
+    "Root",
+    ()=>__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$react$40$1$2e$5$2e$0_$40$date$2d$fns$2b$tz$40$1$2e$4$2e$1_$40$types$2b$react$40$19$2e$2$2e$14_date$2d$fns$40$4$2e$1$2e$0_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$react$2f$esm$2f$field$2f$root$2f$FieldRoot$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["FieldRoot"],
+    "Validity",
+    ()=>__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$react$40$1$2e$5$2e$0_$40$date$2d$fns$2b$tz$40$1$2e$4$2e$1_$40$types$2b$react$40$19$2e$2$2e$14_date$2d$fns$40$4$2e$1$2e$0_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$react$2f$esm$2f$field$2f$validity$2f$FieldValidity$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["FieldValidity"]
+]);
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$react$40$1$2e$5$2e$0_$40$date$2d$fns$2b$tz$40$1$2e$4$2e$1_$40$types$2b$react$40$19$2e$2$2e$14_date$2d$fns$40$4$2e$1$2e$0_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$react$2f$esm$2f$field$2f$index$2e$parts$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$locals$3e$__ = __turbopack_context__.i("[project]/Desktop/LicenseAudit/frontend/node_modules/.pnpm/@base-ui+react@1.5.0_@date-fns+tz@1.4.1_@types+react@19.2.14_date-fns@4.1.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/@base-ui/react/esm/field/index.parts.js [app-ssr] (ecmascript) <locals>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$react$40$1$2e$5$2e$0_$40$date$2d$fns$2b$tz$40$1$2e$4$2e$1_$40$types$2b$react$40$19$2e$2$2e$14_date$2d$fns$40$4$2e$1$2e$0_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$react$2f$esm$2f$field$2f$root$2f$FieldRoot$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/LicenseAudit/frontend/node_modules/.pnpm/@base-ui+react@1.5.0_@date-fns+tz@1.4.1_@types+react@19.2.14_date-fns@4.1.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/@base-ui/react/esm/field/root/FieldRoot.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$react$40$1$2e$5$2e$0_$40$date$2d$fns$2b$tz$40$1$2e$4$2e$1_$40$types$2b$react$40$19$2e$2$2e$14_date$2d$fns$40$4$2e$1$2e$0_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$react$2f$esm$2f$field$2f$label$2f$FieldLabel$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/LicenseAudit/frontend/node_modules/.pnpm/@base-ui+react@1.5.0_@date-fns+tz@1.4.1_@types+react@19.2.14_date-fns@4.1.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/@base-ui/react/esm/field/label/FieldLabel.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$react$40$1$2e$5$2e$0_$40$date$2d$fns$2b$tz$40$1$2e$4$2e$1_$40$types$2b$react$40$19$2e$2$2e$14_date$2d$fns$40$4$2e$1$2e$0_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$react$2f$esm$2f$field$2f$error$2f$FieldError$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/LicenseAudit/frontend/node_modules/.pnpm/@base-ui+react@1.5.0_@date-fns+tz@1.4.1_@types+react@19.2.14_date-fns@4.1.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/@base-ui/react/esm/field/error/FieldError.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$react$40$1$2e$5$2e$0_$40$date$2d$fns$2b$tz$40$1$2e$4$2e$1_$40$types$2b$react$40$19$2e$2$2e$14_date$2d$fns$40$4$2e$1$2e$0_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$react$2f$esm$2f$field$2f$description$2f$FieldDescription$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/LicenseAudit/frontend/node_modules/.pnpm/@base-ui+react@1.5.0_@date-fns+tz@1.4.1_@types+react@19.2.14_date-fns@4.1.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/@base-ui/react/esm/field/description/FieldDescription.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$react$40$1$2e$5$2e$0_$40$date$2d$fns$2b$tz$40$1$2e$4$2e$1_$40$types$2b$react$40$19$2e$2$2e$14_date$2d$fns$40$4$2e$1$2e$0_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$react$2f$esm$2f$field$2f$control$2f$FieldControl$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/LicenseAudit/frontend/node_modules/.pnpm/@base-ui+react@1.5.0_@date-fns+tz@1.4.1_@types+react@19.2.14_date-fns@4.1.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/@base-ui/react/esm/field/control/FieldControl.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$react$40$1$2e$5$2e$0_$40$date$2d$fns$2b$tz$40$1$2e$4$2e$1_$40$types$2b$react$40$19$2e$2$2e$14_date$2d$fns$40$4$2e$1$2e$0_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$react$2f$esm$2f$field$2f$validity$2f$FieldValidity$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/LicenseAudit/frontend/node_modules/.pnpm/@base-ui+react@1.5.0_@date-fns+tz@1.4.1_@types+react@19.2.14_date-fns@4.1.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/@base-ui/react/esm/field/validity/FieldValidity.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$react$40$1$2e$5$2e$0_$40$date$2d$fns$2b$tz$40$1$2e$4$2e$1_$40$types$2b$react$40$19$2e$2$2e$14_date$2d$fns$40$4$2e$1$2e$0_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$react$2f$esm$2f$field$2f$item$2f$FieldItem$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/LicenseAudit/frontend/node_modules/.pnpm/@base-ui+react@1.5.0_@date-fns+tz@1.4.1_@types+react@19.2.14_date-fns@4.1.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/@base-ui/react/esm/field/item/FieldItem.js [app-ssr] (ecmascript)");
+}),
+"[project]/Desktop/LicenseAudit/frontend/node_modules/.pnpm/@base-ui+react@1.5.0_@date-fns+tz@1.4.1_@types+react@19.2.14_date-fns@4.1.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/@base-ui/react/esm/field/index.parts.js [app-ssr] (ecmascript) <export * as Field>", ((__turbopack_context__) => {
+"use strict";
+
+__turbopack_context__.s([
+    "Field",
+    ()=>__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$react$40$1$2e$5$2e$0_$40$date$2d$fns$2b$tz$40$1$2e$4$2e$1_$40$types$2b$react$40$19$2e$2$2e$14_date$2d$fns$40$4$2e$1$2e$0_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$react$2f$esm$2f$field$2f$index$2e$parts$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__
+]);
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$LicenseAudit$2f$frontend$2f$node_modules$2f2e$pnpm$2f40$base$2d$ui$2b$react$40$1$2e$5$2e$0_$40$date$2d$fns$2b$tz$40$1$2e$4$2e$1_$40$types$2b$react$40$19$2e$2$2e$14_date$2d$fns$40$4$2e$1$2e$0_react$2d$dom$40$19$2e$2$2e$4_react$40$19$2e$2$2e$4_$5f$react$40$19$2e$2$2e$4$2f$node_modules$2f40$base$2d$ui$2f$react$2f$esm$2f$field$2f$index$2e$parts$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/LicenseAudit/frontend/node_modules/.pnpm/@base-ui+react@1.5.0_@date-fns+tz@1.4.1_@types+react@19.2.14_date-fns@4.1.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/@base-ui/react/esm/field/index.parts.js [app-ssr] (ecmascript)");
+}),
+];
+
+//# sourceMappingURL=0i90_%40base-ui_react_esm_field_0--5yt0._.js.map
