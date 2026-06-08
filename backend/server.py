@@ -50,7 +50,140 @@ class AgentPayload(BaseModel):
     company_id: str
     machine_id: str
     software_data: Dict[str, str]
+# --- Fixed Schema Layer ---
+class UIDashboardMetrics(BaseModel):
+    totalDevices: int
+    totalSoftwareAssets: int
+    complianceAlerts: int
+    potentialSavings: float
 
+class UIDevice(BaseModel):
+    id: str
+    deviceName: str
+    os: str
+    ipAddress: str
+    lastAudit: str
+    status: str
+
+class UISoftwareAsset(BaseModel):
+    id: str
+    applicationName: str
+    version: str  # Fixed to str
+    totalInstallations: int
+    licenseType: str
+    complianceStatus: str
+
+class UIDashboardPayload(BaseModel):
+    metrics: UIDashboardMetrics
+    devices: list[UIDevice]
+    software: list[UISoftwareAsset]
+
+@app.get("/v1/dashboard", response_model=UIDashboardPayload)
+async def get_dashboard_data(company_id: str = "default_company"):
+    conn = db_pool.getconn()
+    try:
+        cursor = conn.cursor()
+
+        # 1. Fetch Unique System Devices
+        cursor.execute(
+            """
+            SELECT machine_id, MAX(last_scanned_at) as last_audit
+            FROM machine_inventories 
+            WHERE company_id = %s 
+            GROUP BY machine_id;
+            """,
+            (company_id,),
+        )
+        device_rows = cursor.fetchall()
+
+        ui_devices = []
+        for dev in device_rows:
+            m_id = dev["machine_id"]
+            ui_devices.append({
+                "id": m_id,
+                "deviceName": m_id,
+                "os": "Linux" if "lnx" in m_id.lower() or "linux" in m_id.lower() else "Windows",
+                "ipAddress": "10.4.x.x",  # Placeholder unless streamed by agent
+                "lastAudit": dev["last_audit"].isoformat() + "Z",
+                "status": "active" if (datetime.utcnow() - dev["last_audit"]).days < 2 else "offline"
+            })
+
+        # 2. Fetch Aggregated Discovered Software Packages paired with purchased License stats
+        cursor.execute(
+            """
+            SELECT 
+                m.id as app_id,
+                m.app_name,
+                m.risk_tier,
+                m.app_type,
+                COUNT(DISTINCT i.machine_id) as installations_count,
+                MAX(i.installed_version) as typical_version,
+                COALESCE(l.seats_purchased, 0) as seats_purchased,
+                COALESCE(l.license_cost, 0.00) as unit_cost
+            FROM master_apps m
+            JOIN machine_inventories i ON m.id = i.master_app_id
+            LEFT JOIN software_licenses l ON m.id = l.master_app_id AND l.company_id = %s
+            WHERE i.company_id = %s
+            GROUP BY m.id, m.app_name, m.risk_tier, m.app_type, l.seats_purchased, l.license_cost;
+            """,
+            (company_id, company_id),
+        )
+        software_rows = cursor.fetchall()
+
+        ui_software = []
+        alerts_count = 0
+        total_wasted_spend = 0.0
+
+        for sw in software_rows:
+            installs = sw["installations_count"]
+            seats = sw["seats_purchased"]
+            unit_cost = float(sw["unit_cost"])
+            
+            # Real SAM Compliance logic calculations
+            if sw["risk_tier"] == 3:  # Commercial Software
+                lic_type = "Commercial"
+                if installs > seats:
+                    compliance = "Unlicensed"
+                    alerts_count += 1
+                elif seats > installs:
+                    compliance = "Over-licensed"
+                    # Financial Optimization: Cost per seat * unused seats sitting idle
+                    total_wasted_spend += (seats - installs) * unit_cost
+                else:
+                    compliance = "Compliant"
+            else:
+                lic_type = "Open Source" if sw["risk_tier"] == 1 else "Freeware"
+                compliance = "Compliant"
+
+            ui_software.append({
+                "id": str(sw["app_id"]),
+                "applicationName": sw["app_name"],
+                "version": sw["typical_version"],
+                "totalInstallations": installs,
+                "licenseType": lic_type,
+                "complianceStatus": compliance
+            })
+
+        # 3. Pack complete payload summary mapping directly to Next.js state fields
+        payload = {
+            "metrics": {
+                "totalDevices": len(ui_devices),
+                "totalSoftwareAssets": len(ui_software),
+                "complianceAlerts": alerts_count,
+                "potentialSavings": total_wasted_spend
+            },
+            "devices": ui_devices,
+            "software": ui_software
+        }
+
+        cursor.close()
+        return payload
+
+    except Exception as err:
+        print(f"SAM compilation engine exception: {err}")
+        raise HTTPException(status_code=500, detail="Internal asset calculation failure.")
+    finally:
+        db_pool.putconn(conn)
 
 @app.post("/api/upload_scan")
 async def upload_scan(payload: AgentPayload):
