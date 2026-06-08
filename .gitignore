@@ -1,3 +1,10 @@
+# --- React & Node ---
+frontend/node_modules/
+frontend/dist/
+frontend/.next/          <-- ADD THIS
+frontend/out/            <-- ADD THIS
+frontend/tsconfig.tsbuildinfo  <-- ADD THIS
+.DS_Store
 # --- Python & FastAPI ---
 __pycache__/
 *.py[cod]
