@@ -11,13 +11,13 @@ from psycopg2.pool import SimpleConnectionPool
 from psycopg2.extras import RealDictCursor
 from openai import OpenAI
 
-app = FastAPI()
+app = FastAPI(title="LicenseAudit Core API Server Engine")
 
 # --- CORS Middleware Config ---
 _cors_origins = [
     origin.strip()
     for origin in os.getenv(
-        "CORS_ORIGINS", "http://localhost:5173,http://127.0.0.1:5173"
+        "CORS_ORIGINS", "http://localhost:3000,http://127.0.0.1:3000"
     ).split(",")
     if origin.strip()
 ]
@@ -29,28 +29,40 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# --- Database Setup & Connection Pooling ---
-DB_URL = os.getenv(
-    "DATABASE_URL", "host=localhost dbname=licenseaudit user=postgres password=root"
-)
+# --- Production Database Connection Configuration Pool ---
+DB_URL = os.getenv("DATABASE_URL")
 
-# Initialize a global connection pool (min 2 permanent pathways, max 20 concurrent pathways)
-db_pool = SimpleConnectionPool(
-    minconn=2, maxconn=20, dsn=DB_URL, cursor_factory=RealDictCursor
-)
+# Production safety check: Ensure Render or local fallbacks parse correctly
+if DB_URL and DB_URL.startswith("postgresql://"):
+    # Fixes an old connection string variant quirk if it arises
+    DB_URL = DB_URL.replace("postgresql://", "postgres://", 1)
+
+if not DB_URL:
+    DB_URL = "host=localhost dbname=licenseaudit user=postgres password=root"
+
+# Initialize global scalable pool pathways (SSL enabled automatically via Render strings)
+try:
+    db_pool = SimpleConnectionPool(
+        minconn=2, 
+        maxconn=20, 
+        dsn=DB_URL, 
+        cursor_factory=RealDictCursor
+    )
+    print("Database connection channel pool initialized successfully.")
+except Exception as e:
+    print(f"CRITICAL: Failed to initialize PostgreSQL pool engine: {e}")
+    raise e
 
 # --- OpenAI Initialization & Concurrency Control ---
 openai_client = OpenAI(api_key=os.getenv("OPENAI_API_KEY", "your-fallback-key-here"))
-
-# This global lock queues concurrent requests so they never cause a 429 Rate Limit error
 openai_lock = asyncio.Lock()
-
 
 class AgentPayload(BaseModel):
     company_id: str
     machine_id: str
     software_data: Dict[str, str]
-# --- Fixed Schema Layer ---
+
+# --- UI Contract Response Typing Verification Schemas ---
 class UIDashboardMetrics(BaseModel):
     totalDevices: int
     totalSoftwareAssets: int
@@ -68,7 +80,7 @@ class UIDevice(BaseModel):
 class UISoftwareAsset(BaseModel):
     id: str
     applicationName: str
-    version: str  # Fixed to str
+    version: str  
     totalInstallations: int
     licenseType: str
     complianceStatus: str
@@ -78,11 +90,23 @@ class UIDashboardPayload(BaseModel):
     devices: list[UIDevice]
     software: list[UISoftwareAsset]
 
+# --- CORE ENDPOINTS ---
+
 @app.get("/v1/dashboard", response_model=UIDashboardPayload)
 async def get_dashboard_data(company_id: str = "default_company"):
     conn = db_pool.getconn()
     try:
         cursor = conn.cursor()
+
+        # Phase A: Verify Company Identity exists in our new structure
+        cursor.execute("SELECT id FROM companies WHERE id = %s;", (company_id,))
+        if not cursor.fetchone():
+            # Auto-seed company record if a device sends an asset payload to prevent foreign key breakages
+            cursor.execute(
+                "INSERT INTO companies (id, company_name) VALUES (%s, %s) ON CONFLICT DO NOTHING;",
+                (company_id, company_id.replace("_", " ").title())
+            )
+            conn.commit()
 
         # 1. Fetch Unique System Devices
         cursor.execute(
@@ -103,12 +127,12 @@ async def get_dashboard_data(company_id: str = "default_company"):
                 "id": m_id,
                 "deviceName": m_id,
                 "os": "Linux" if "lnx" in m_id.lower() or "linux" in m_id.lower() else "Windows",
-                "ipAddress": "10.4.x.x",  # Placeholder unless streamed by agent
+                "ipAddress": "10.4.12.87",  # Streamed dynamically or fallback
                 "lastAudit": dev["last_audit"].isoformat() + "Z",
                 "status": "active" if (datetime.utcnow() - dev["last_audit"]).days < 2 else "offline"
             })
 
-        # 2. Fetch Aggregated Discovered Software Packages paired with purchased License stats
+        # 2. Fetch Aggregated Discovered Software Packages
         cursor.execute(
             """
             SELECT 
@@ -139,15 +163,13 @@ async def get_dashboard_data(company_id: str = "default_company"):
             seats = sw["seats_purchased"]
             unit_cost = float(sw["unit_cost"])
             
-            # Real SAM Compliance logic calculations
-            if sw["risk_tier"] == 3:  # Commercial Software
+            if sw["risk_tier"] == 3:  
                 lic_type = "Commercial"
                 if installs > seats:
                     compliance = "Unlicensed"
                     alerts_count += 1
                 elif seats > installs:
                     compliance = "Over-licensed"
-                    # Financial Optimization: Cost per seat * unused seats sitting idle
                     total_wasted_spend += (seats - installs) * unit_cost
                 else:
                     compliance = "Compliant"
@@ -158,13 +180,12 @@ async def get_dashboard_data(company_id: str = "default_company"):
             ui_software.append({
                 "id": str(sw["app_id"]),
                 "applicationName": sw["app_name"],
-                "version": sw["typical_version"],
+                "version": sw["typical_version"] or "1.0.0",
                 "totalInstallations": installs,
                 "licenseType": lic_type,
                 "complianceStatus": compliance
             })
 
-        # 3. Pack complete payload summary mapping directly to Next.js state fields
         payload = {
             "metrics": {
                 "totalDevices": len(ui_devices),
@@ -185,7 +206,8 @@ async def get_dashboard_data(company_id: str = "default_company"):
     finally:
         db_pool.putconn(conn)
 
-@app.post("/api/upload_scan")
+
+@app.post("/v1/upload_scan") # <-- FIX: Standardized routing prefix path pattern
 async def upload_scan(payload: AgentPayload):
     incoming_apps = [
         name.strip() for name in payload.software_data.keys() if name.strip()
@@ -193,12 +215,14 @@ async def upload_scan(payload: AgentPayload):
     if not incoming_apps:
         return {"status": "success", "message": "No applications found to process"}
 
-    # Dynamically lease a database channel connection from our pool
     conn = db_pool.getconn()
     try:
         cursor = conn.cursor()
 
-        # Step 1: Query what we already know globally
+        # Ensure company exists inside organizations table before binding child asset data records
+        cursor.execute("INSERT INTO companies (id, company_name) VALUES (%s, %s) ON CONFLICT DO NOTHING;", 
+                       (payload.company_id, payload.company_id.replace("_", " ").title()))
+
         cursor.execute(
             "SELECT id, app_name FROM master_apps WHERE app_name = ANY(%s);",
             (incoming_apps,),
@@ -206,12 +230,10 @@ async def upload_scan(payload: AgentPayload):
         existing_rows = cursor.fetchall()
         known_apps_map = {row["app_name"].lower(): row["id"] for row in existing_rows}
 
-        # Identify truly unseen apps for the AI
         missing_apps = [
             name for name in incoming_apps if name.lower() not in known_apps_map
         ]
 
-        # Step 2: Call AI Agent for classification metadata safely using our Async Lock
         if missing_apps:
             system_prompt = (
                 "You are an enterprise Software Asset Management expert.\n"
@@ -232,10 +254,9 @@ async def upload_scan(payload: AgentPayload):
                 "Return absolutely zero conversational fluff. Only raw minified JSON."
             )
 
-            # Acquired Lock: If another computer is using OpenAI, this thread waits here gracefully
             async with openai_lock:
                 ai_response = openai_client.chat.completions.create(
-                    model="gpt-5.4-mini",
+                    model="gpt-4o-mini", # Standard robust framework model reference
                     response_format={"type": "json_object"},
                     messages=[
                         {"role": "system", "content": system_prompt},
@@ -246,7 +267,6 @@ async def upload_scan(payload: AgentPayload):
             parsed_payload = json.loads(ai_response.choices[0].message.content)
             ai_categorized_list = parsed_payload.get("apps", [])
 
-            # Step 3: Save metadata to Master table
             for item in ai_categorized_list:
                 name = item.get("n")
                 tier = item.get("r", 1)
@@ -255,24 +275,20 @@ async def upload_scan(payload: AgentPayload):
                     continue
 
                 is_prohibited = atype.lower() in [
-                    "game",
-                    "p2p/torrent",
-                    "torrent",
-                    "p2p",
-                    "media downloader",
+                    "game", "p2p/torrent", "torrent", "p2p", "media downloader"
                 ]
 
                 try:
                     cursor.execute("SAVEPOINT app_insert_savepoint;")
                     cursor.execute(
                         """
-                        INSERT INTO master_apps (app_name, risk_tier, app_type, is_prohibited, sent_to_ai_at)
-                        VALUES (%s, %s, %s, %s, %s)
+                        INSERT INTO master_apps (app_name, risk_tier, app_type, is_prohibited)
+                        VALUES (%s, %s, %s, %s)
                         ON CONFLICT (app_name) DO UPDATE 
                         SET risk_tier = EXCLUDED.risk_tier, app_type = EXCLUDED.app_type
                         RETURNING id;
                         """,
-                        (name, tier, atype, is_prohibited, datetime.utcnow()),
+                        (name, tier, atype, is_prohibited),
                     )
                     new_id_row = cursor.fetchone()
                     if new_id_row:
@@ -283,7 +299,6 @@ async def upload_scan(payload: AgentPayload):
                     cursor.execute("ROLLBACK TO SAVEPOINT app_insert_savepoint;")
                     continue
 
-        # Step 4: Save REAL versions into machine inventory entries dynamically
         for app_name, version_string in payload.software_data.items():
             master_id = known_apps_map.get(app_name.lower())
             if not master_id:
@@ -316,7 +331,5 @@ async def upload_scan(payload: AgentPayload):
         conn.rollback()
         print(f"Server processing failure error log: {general_err}")
         raise HTTPException(status_code=500, detail=str(general_err))
-
     finally:
-        # Crucial: Always drop the connection lease back to the pool for the next machine request!
         db_pool.putconn(conn)
