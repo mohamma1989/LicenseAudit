@@ -1,26 +1,32 @@
-# --- React & Node ---
-frontend/node_modules/
-frontend/dist/
-frontend/.next/          <-- ADD THIS
-frontend/out/            <-- ADD THIS
-frontend/tsconfig.tsbuildinfo  <-- ADD THIS
+# --- System Logs & Meta ---
 .DS_Store
-# --- Python & FastAPI ---
+Thumbs.db
+*.log
+
+# --- Python & FastAPI Backend ---
 __pycache__/
 *.py[cod]
+*$py.class
 .mypy_cache/
+.pytest_cache/
 backend/liau_env/
-keys.py
+backend/keys.py
+backend/.env
 .env
 
-# --- Database ---
+# --- PostgreSQL & Local Databases ---
 *.db
 backend/scans.db
+backend/windows_outputs/*.txt
 
-# --- React & Node ---
+# --- Next.js Frontend Framework ---
 frontend/node_modules/
+frontend/.next/
+frontend/out/
+frontend/build/
 frontend/dist/
-.DS_Store
+frontend/tsconfig.tsbuildinfo
+frontend/.pnpm-store/
 
 # --- PyInstaller (Windows Build Files) ---
 build/
