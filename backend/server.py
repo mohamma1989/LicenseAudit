@@ -17,7 +17,7 @@ app = FastAPI(title="LicenseAudit Core API Server Engine")
 _cors_origins = [
     origin.strip()
     for origin in os.getenv(
-        "CORS_ORIGINS", "http://localhost:3000,http://127.0.0.1:3000"
+        "CORS_ORIGINS", "http://localhost:3000,http://127.0.0.1:3000,http://localhost:5173,http://127.0.0.1:5173"
     ).split(",")
     if origin.strip()
 ]
@@ -32,15 +32,19 @@ app.add_middleware(
 # --- Production Database Connection Configuration Pool ---
 DB_URL = os.getenv("DATABASE_URL")
 
-# Production safety check: Ensure Render or local fallbacks parse correctly
-if DB_URL and DB_URL.startswith("postgresql://"):
-    # Fixes an old connection string variant quirk if it arises
-    DB_URL = DB_URL.replace("postgresql://", "postgres://", 1)
+if DB_URL:
+    if DB_URL.startswith("postgres://"):
+        DB_URL = DB_URL.replace("postgres://", "postgresql://", 1)
+else:
+    # Local fallback using environment variables
+    local_user = os.getenv("DB_USER", "postgres")
+    local_pass = os.getenv("DB_PASSWORD", "root")
+    local_db = os.getenv("DB_NAME", "licenseaudit")
+    local_host = os.getenv("DB_HOST", "localhost")
+    local_port = os.getenv("DB_PORT", "5432")
+    DB_URL = f"postgresql://{local_user}:{local_pass}@{local_host}:{local_port}/{local_db}"
 
-if not DB_URL:
-    DB_URL = "host=localhost dbname=licenseaudit user=postgres password=root"
-
-# Initialize global scalable pool pathways (SSL enabled automatically via Render strings)
+# Initialize connection pool
 try:
     db_pool = SimpleConnectionPool(
         minconn=2, 
@@ -48,13 +52,14 @@ try:
         dsn=DB_URL, 
         cursor_factory=RealDictCursor
     )
-    print("Database connection channel pool initialized successfully.")
+    print("Database connection pool initialized successfully.")
 except Exception as e:
     print(f"CRITICAL: Failed to initialize PostgreSQL pool engine: {e}")
     raise e
 
 # --- OpenAI Initialization & Concurrency Control ---
-openai_client = OpenAI(api_key=os.getenv("OPENAI_API_KEY", "your-fallback-key-here"))
+OPENAI_KEY = os.getenv("OPENAI_API_KEY")
+openai_client = OpenAI(api_key=OPENAI_KEY) if OPENAI_KEY else None
 openai_lock = asyncio.Lock()
 
 class AgentPayload(BaseModel):
@@ -98,10 +103,9 @@ async def get_dashboard_data(company_id: str = "default_company"):
     try:
         cursor = conn.cursor()
 
-        # Phase A: Verify Company Identity exists in our new structure
+        # Phase A: Ensure company record exists
         cursor.execute("SELECT id FROM companies WHERE id = %s;", (company_id,))
         if not cursor.fetchone():
-            # Auto-seed company record if a device sends an asset payload to prevent foreign key breakages
             cursor.execute(
                 "INSERT INTO companies (id, company_name) VALUES (%s, %s) ON CONFLICT DO NOTHING;",
                 (company_id, company_id.replace("_", " ").title())
@@ -127,7 +131,7 @@ async def get_dashboard_data(company_id: str = "default_company"):
                 "id": m_id,
                 "deviceName": m_id,
                 "os": "Linux" if "lnx" in m_id.lower() or "linux" in m_id.lower() else "Windows",
-                "ipAddress": "10.4.12.87",  # Streamed dynamically or fallback
+                "ipAddress": "10.4.12.87",
                 "lastAudit": dev["last_audit"].isoformat() + "Z",
                 "status": "active" if (datetime.utcnow() - dev["last_audit"]).days < 2 else "offline"
             })
@@ -207,7 +211,7 @@ async def get_dashboard_data(company_id: str = "default_company"):
         db_pool.putconn(conn)
 
 
-@app.post("/v1/upload_scan") # <-- FIX: Standardized routing prefix path pattern
+@app.post("/v1/upload_scan")
 async def upload_scan(payload: AgentPayload):
     incoming_apps = [
         name.strip() for name in payload.software_data.keys() if name.strip()
@@ -219,7 +223,7 @@ async def upload_scan(payload: AgentPayload):
     try:
         cursor = conn.cursor()
 
-        # Ensure company exists inside organizations table before binding child asset data records
+        # Ensure company exists
         cursor.execute("INSERT INTO companies (id, company_name) VALUES (%s, %s) ON CONFLICT DO NOTHING;", 
                        (payload.company_id, payload.company_id.replace("_", " ").title()))
 
@@ -234,7 +238,7 @@ async def upload_scan(payload: AgentPayload):
             name for name in incoming_apps if name.lower() not in known_apps_map
         ]
 
-        if missing_apps:
+        if missing_apps and openai_client:
             system_prompt = (
                 "You are an enterprise Software Asset Management expert.\n"
                 "Categorize the provided list of software names into a JSON object containing an array named 'apps'.\n"
@@ -256,7 +260,7 @@ async def upload_scan(payload: AgentPayload):
 
             async with openai_lock:
                 ai_response = openai_client.chat.completions.create(
-                    model="gpt-4o-mini", # Standard robust framework model reference
+                    model="gpt-4o-mini",
                     response_format={"type": "json_object"},
                     messages=[
                         {"role": "system", "content": system_prompt},
