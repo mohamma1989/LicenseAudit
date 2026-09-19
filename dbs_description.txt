@@ -1,0 +1,52 @@
+**software_licenses table properties:
+
+    id → integer, primary key, auto‑increment
+
+    company_id → text/varchar, required
+
+    master_app_id → integer, optional (foreign key to master_apps)
+
+    seats_purchased → integer, default 0
+
+    license_cost → numeric, default 0.00
+
+    expiration_date → date, optional
+    updated_at → timestamp timestamp without time zone DEFAULT CURRENT_TIMESTAMP,
+---
+
+**master_apps table properties:**  
+- id → integer, primary key, auto-increment  
+- app_name → text/varchar, required  
+- risk_tier → integer, default 1  
+- app_type → text/varchar, default "Unknown"  
+- is_prohibited → boolean, default false  
+- is_reviewed_by_ad → boolean, default false  
+- created_at → timestamp, default current time  
+
+---
+
+**machine_inventories table properties:**  
+- id → integer, primary key, auto-increment  
+- company_id → text/varchar, required  
+- machine_id → text/varchar, required  
+- master_app_id → integer, foreign key to master_apps  
+- installed_version → text/varchar, default "Unknown"  
+- last_scanned_at → timestamp, default current time  
+
+---
+
+**companies table properties: - id → text/varchar, primary key (e.g., "acme_corp")
+
+    company_name → text/varchar, required
+
+    created_at → timestamp, default current time
+
+**admin_users table properties: - id → text/varchar, primary key (holds the unique user string from Clerk/Kinde)
+
+    company_id → text/varchar, foreign key referencing companies(id), cascades on delete
+
+    email → text/varchar, required, unique
+
+    role → text/varchar, default "admin"
+
+    created_at → timestamp, default current time
